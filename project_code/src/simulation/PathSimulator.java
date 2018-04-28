@@ -14,7 +14,7 @@ public class PathSimulator {
 		
 	}
 	
-	//Method that returns a random variable between two numbers
+	//Method that returns a random variable between two numbers, according to some time constants
 	int expRandom(){
 		return 0;
 	}

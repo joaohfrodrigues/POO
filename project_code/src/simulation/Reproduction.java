@@ -1,8 +1,8 @@
 package simulation;
 
 class Reproduction extends Event{
-	Reproduction(int _time, int _prob){
-		super(_time,_prob);
+	Reproduction(int _time, int _id){
+		super(_time,_id);
 	}
 	
 	void simulateEvent(){
@@ -11,6 +11,6 @@ class Reproduction extends Event{
 	
 	@Override
 	public String toString() {
-		return "Event: Reproduction ; Time: " + time;
+		return "Event: Reproduction , Time: " + time;
 	}
 }

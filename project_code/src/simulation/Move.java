@@ -1,8 +1,8 @@
 package simulation;
 
 class Move extends Event{
-	Move(int _time, int _prob){
-		super(_time,_prob);
+	Move(int _time, int _id){
+		super(_time,_id);
 	}
 	
 	void simulateEvent(){
@@ -11,6 +11,6 @@ class Move extends Event{
 	
 	@Override
 	public String toString() {
-		return "Event: Move ; Time: " + time;
+		return "Event: Move , Time: " + time;
 	}
 }

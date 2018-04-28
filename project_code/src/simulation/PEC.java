@@ -1,7 +1,7 @@
 package simulation;
 import java.util.*;
 /*
- * Implementation of the pending event container. A class named Event mus be defined in order to use the PEC
+ * Implementation of the pending event container. A class named Event must be defined in order to use the PEC
  */
 public class PEC {
 	TreeSet <Event> ev_set;

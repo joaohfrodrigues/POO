@@ -1,8 +1,8 @@
 package simulation;
 
 class Death extends Event{
-	Death(int _time, int _prob){
-		super(_time, _prob);
+	Death(int _time, int _id){
+		super(_time, _id);
 	}
 	
 	void simulateEvent(){
@@ -11,6 +11,6 @@ class Death extends Event{
 	
 	@Override
 	public String toString() {
-		return "Event: Death ; Time: " + time;
+		return "Event: Death , Time: " + time;
 	}
 }

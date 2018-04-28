@@ -4,11 +4,11 @@ package simulation;
  */
 public abstract class Event {
 	int time;
-	int prob;
+	int id;
 	
-	Event(int _time, int _prob){
+	Event(int _time, int _id){
 		time=_time;
-		prob=_prob;
+		id=_id;
 	}
 	 
 	/*

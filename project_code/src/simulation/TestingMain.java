@@ -10,6 +10,12 @@ public class TestingMain {
 		pecinho.addEvPEC(new Reproduction(7, 8));
 		
 		System.out.println(pecinho);
+		
+		Event next= pecinho.nextEvPEC();
+		
+		System.out.println(next);
+		System.out.println("\n");
+		System.out.println(pecinho);
 	}
 
 }
