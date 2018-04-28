@@ -8,6 +8,11 @@ public class PathSimulator {
 	int simulationTime;
 	int currentTime;
 	Population pop;
+	Grid simGrid;
+	
+	void parseFile() {
+		
+	}
 	
 	//Method that returns a random variable between two numbers
 	int expRandom(){

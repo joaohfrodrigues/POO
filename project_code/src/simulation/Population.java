@@ -2,11 +2,11 @@ package simulation;
 
 class Population {
 	int size;
-	int max_size;
+	int maxSize;
 	
-	Population(int _size, int _max_size){
+	Population(int _size, int _maxSize){
 		size=_size;
-		max_size=_max_size;
+		maxSize=_maxSize;
 	}
 	
 	void Epidemics() {
