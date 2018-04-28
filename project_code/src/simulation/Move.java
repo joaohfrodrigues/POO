@@ -8,4 +8,9 @@ class Move extends Event{
 	void simulateEvent(){
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "Event: Move ; Time: " + time;
+	}
 }

@@ -8,4 +8,9 @@ class Reproduction extends Event{
 	void simulateEvent(){
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "Event: Reproduction ; Time: " + time;
+	}
 }

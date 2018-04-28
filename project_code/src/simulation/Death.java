@@ -8,4 +8,9 @@ class Death extends Event{
 	void simulateEvent(){
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "Event: Death ; Time: " + time;
+	}
 }
