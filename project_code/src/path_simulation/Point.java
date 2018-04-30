@@ -1,4 +1,4 @@
-package simulation;
+package path_simulation;
 
 class Point {
 	int x;

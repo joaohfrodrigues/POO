@@ -1,4 +1,4 @@
-<!ELEMENT simulation (grid, initialpoint, finalpoint, (specialcostzones, obstacles)?, events)>
+<!ELEMENT simulation (grid, initialpoint, finalpoint, specialcostzones?, obstacles?, events)>
 <!ATTLIST simulation
 finalinst CDATA "100"
 initpop CDATA "10"

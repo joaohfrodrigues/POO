@@ -1,10 +1,10 @@
-package simulation;
+package path_simulation;
 import pec.Event;
 
-class Move extends Event{
+class Reproduction extends Event{
 	Individual id;
-
-	Move(int _time, Individual _id){
+	
+	Reproduction(int _time, Individual _id){
 		super(_time);
 		id=_id;
 	}
@@ -15,6 +15,6 @@ class Move extends Event{
 	
 	@Override
 	public String toString() {
-		return "Event: Move , id= " + id;
+		return "Event: Reproduction , id= " + id;
 	}
 }

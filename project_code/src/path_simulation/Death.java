@@ -1,20 +1,20 @@
-package simulation;
+package path_simulation;
 import pec.Event;
 
-class Reproduction extends Event{
+class Death extends Event{
 	Individual id;
 	
-	Reproduction(int _time, Individual _id){
+	Death(int _time, Individual _id){
 		super(_time);
 		id=_id;
 	}
 	
 	public void simulateEvent(){
-		
+		id=null;
 	}
 	
 	@Override
 	public String toString() {
-		return "Event: Reproduction , id= " + id;
+		return "Event: Death, id = " + id;
 	}
 }

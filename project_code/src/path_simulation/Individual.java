@@ -1,4 +1,4 @@
-package simulation;
+package path_simulation;
 
 class Individual {
 	Point curr_position;

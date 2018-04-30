@@ -1,4 +1,4 @@
-package simulation;
+package path_simulation;
 import pec.*;
 
 public class TestingMain {

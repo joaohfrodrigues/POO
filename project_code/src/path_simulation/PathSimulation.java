@@ -1,18 +1,38 @@
-package simulation;
+package path_simulation;
 import pec.PEC;
-
+import simulation.Simulation;
 /*
  * Path Simulator. Includes the Pending Event Container, current time and simulation time
  * and the population of individuals
  */
-public class PathSimulator {
+public class PathSimulation implements Simulation{
 	PEC pec;
 	int simulationTime;
 	int currentTime;
 	Population pop;
 	Grid simGrid;
 	
-	void parseFile() {
+	public void defineGrid() {
+		
+	}
+	
+	public void defineObstacles() {
+		
+	}
+	
+	public void defineEdges() {
+		
+	}
+	
+	public void defineEvents() {
+		
+	}
+	
+	public void initSimulation() {
+		
+	}
+	
+	public void stopSimulation() {
 		
 	}
 	
