@@ -2,9 +2,9 @@ package simulation;
 import pec.Event;
 
 class Move extends Event{
-	int id;
+	Individual id;
 
-	Move(int _time, int _id){
+	Move(int _time, Individual _id){
 		super(_time);
 		id=_id;
 	}

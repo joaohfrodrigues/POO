@@ -2,9 +2,9 @@ package simulation;
 import pec.Event;
 
 class Reproduction extends Event{
-	int id;
+	Individual id;
 	
-	Reproduction(int _time, int _id){
+	Reproduction(int _time, Individual _id){
 		super(_time);
 		id=_id;
 	}

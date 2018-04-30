@@ -2,15 +2,15 @@ package simulation;
 import pec.Event;
 
 class Death extends Event{
-	int id;
+	Individual id;
 	
-	Death(int _time, int _id){
+	Death(int _time, Individual _id){
 		super(_time);
 		id=_id;
 	}
 	
 	public void simulateEvent(){
-		
+		id=null;
 	}
 	
 	@Override

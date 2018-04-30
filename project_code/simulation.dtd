@@ -1,0 +1,8 @@
+<!DOCTYPE simulation [
+	<!ELEMENT simulation (grid, initialpoint, finalpoint, specialcostzones, obstacles, events)>
+	<!ATTLIST simulation 
+	finalinst CDATA "100"
+	initpop CDATA "10"
+	maxpop CDATA "50"
+	comfortsens CDATA "1">
+]

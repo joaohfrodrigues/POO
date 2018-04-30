@@ -1,9 +1,15 @@
 package simulation;
 
 class Individual {
-	int id;
+	Point curr_position;
+	Path path;
 	
-	Individual(int _id){
-		id=_id;
+	Individual(int x, int y){
+		curr_position = new Point(x,y);
+	}
+	
+	@Override
+	public String toString() {
+		return("Individual in position: " + curr_position);
 	}
 }

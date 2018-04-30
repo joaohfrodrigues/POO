@@ -5,9 +5,10 @@ public class TestingMain {
 	public static void main(String[] args) {
 		PEC pecinho = new PEC();
 		
-		pecinho.addEvPEC(new Death(10, 3));
-		pecinho.addEvPEC(new Move(5, 2));
-		pecinho.addEvPEC(new Reproduction(7, 8));
+		Individual a= new Individual(4,5);
+		pecinho.addEvPEC(new Death(10, a));
+		pecinho.addEvPEC(new Move(5, a));
+		pecinho.addEvPEC(new Reproduction(7, a));
 		
 		System.out.println(pecinho);
 		
