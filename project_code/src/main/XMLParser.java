@@ -16,16 +16,43 @@ public class XMLParser extends DefaultHandler{
 	}
 	
 	public void endDocument(){
-	 System.out.println("Parsing concluded");
+		System.out.println("Parsing concluded");
 	}
 	
-	public void startElement(String uri, String name,
-	 String tag, Attributes atts){
-	 System.out.print("Element <" + tag + "> ");
+	public void startElement(String uri, String name, String tag, Attributes atts){
+		System.out.println("Element <" + tag + "> ");
+		
+		if (tag.equals("simulation")) {
+			
+		}else if (tag.equals("grid")) {
+			
+		}else if (tag.equals("initialpoint")) {
+			
+		}else if (tag.equals("finalpoint")) {
+			
+		}else if (tag.equals("specialcostzones")) {
+			
+		}else if (tag.equals("zone")) {
+			
+		}else if (tag.equals("obstacles")) {
+			
+		}else if (tag.equals("obstacle")) {
+			
+		}else if (tag.equals("events")) {
+			
+		}else if (tag.equals("death")) {
+			
+		}else if (tag.equals("reproduction")) {
+			
+		}else if (tag.equals("move")) {
+			
+		}else
+			System.out.println("Element not recognized");
+			
 	}
 	
 	public void characters(char[]ch,int start,int length){
-	 System.out.print(new String(ch,start,length));
+		System.out.println(new String(ch,start,length));
 	}
 	
 	public void parseFile(){
