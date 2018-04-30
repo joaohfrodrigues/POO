@@ -1,4 +1,6 @@
 package simulation;
+import pec.PEC;
+
 /*
  * Path Simulator. Includes the Pending Event Container, current time and simulation time
  * and the population of individuals

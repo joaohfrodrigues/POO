@@ -1,4 +1,4 @@
-package simulation;
+package pec;
 import java.util.*;
 /*
  * Implementation of the pending event container. A class named Event must be defined in order to use the PEC
@@ -6,15 +6,15 @@ import java.util.*;
 public class PEC {
 	TreeSet <Event> ev_set;
 	
-	PEC(){
+	public PEC(){
 		ev_set = new TreeSet<Event>(new CompByTime());
 	}
 	
-	void addEvPEC(Event ev) {
+	public void addEvPEC(Event ev) {
 		ev_set.add(ev);
 	}
 	
-	Event nextEvPEC(){
+	public Event nextEvPEC(){
 		return ev_set.pollFirst();
 	}
 	

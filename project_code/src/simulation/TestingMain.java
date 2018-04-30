@@ -1,7 +1,7 @@
 package simulation;
+import pec.*;
 
 public class TestingMain {
-
 	public static void main(String[] args) {
 		PEC pecinho = new PEC();
 		

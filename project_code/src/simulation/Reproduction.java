@@ -1,16 +1,20 @@
 package simulation;
+import pec.Event;
 
 class Reproduction extends Event{
+	int id;
+	
 	Reproduction(int _time, int _id){
-		super(_time,_id);
+		super(_time);
+		id=_id;
 	}
 	
-	void simulateEvent(){
+	public void simulateEvent(){
 		
 	}
 	
 	@Override
 	public String toString() {
-		return "Event: Reproduction , Time: " + time;
+		return "Event: Reproduction , id= " + id;
 	}
 }

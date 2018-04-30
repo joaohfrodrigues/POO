@@ -1,14 +1,12 @@
-package simulation;
+package pec;
 /*
  * Can be Death, Reproduction or Move, in the project
  */
 public abstract class Event {
 	int time;
-	int id;
 	
-	Event(int _time, int _id){
+	public Event(int _time){
 		time=_time;
-		id=_id;
 	}
 	 
 	/*
@@ -25,11 +23,12 @@ public abstract class Event {
 		return false;
 	}
 	*/
-	abstract void simulateEvent();
-	
+	public abstract void simulateEvent();
+	/*
 	public int compareTime(Event e1) {
 		if(this.time > e1.time) return 1;
 		else if(this.time == e1.time) return 0;
 		else return -1;
 	}
+	*/
 }

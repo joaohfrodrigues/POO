@@ -1,16 +1,20 @@
 package simulation;
+import pec.Event;
 
 class Death extends Event{
+	int id;
+	
 	Death(int _time, int _id){
-		super(_time, _id);
+		super(_time);
+		id=_id;
 	}
 	
-	void simulateEvent(){
+	public void simulateEvent(){
 		
 	}
 	
 	@Override
 	public String toString() {
-		return "Event: Death , Time: " + time;
+		return "Event: Death, id = " + id;
 	}
 }
