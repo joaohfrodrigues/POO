@@ -1,8 +1,12 @@
 package path_simulation;
-import pec.*;
 
 public class TestingMain {
 	public static void main(String[] args) {
+		Grid grid= new Grid(5,5);
+		
+		System.out.println(grid);
+		
+		/* Testing PEC
 		PEC pecinho = new PEC();
 		
 		Individual a= new Individual(4,5);
@@ -17,6 +21,7 @@ public class TestingMain {
 		System.out.println(next);
 		System.out.println("\n");
 		System.out.println(pecinho);
+		*/
 	}
 
 }
