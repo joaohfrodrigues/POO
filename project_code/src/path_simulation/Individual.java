@@ -4,8 +4,8 @@ class Individual {
 	Point curr_position;
 	Path path;
 	
-	Individual(int x, int y){
-		curr_position = new Point(x,y);
+	Individual(Point pos){
+		curr_position = pos;
 	}
 	
 	@Override
