@@ -1,7 +1,7 @@
 package path_simulation;
 
 class Grid {
-	Point [][] simGrid;
+	Point [][] grid;
 	int nrows; //rows
 	int ncols; //columns
 	
@@ -9,7 +9,12 @@ class Grid {
 		int x,y;
 		nrows=_nrows;
 		ncols=_ncols;
-		simGrid = new Point[ncols][nrows];
+		
+		if(nrows==0 || ncols==0) {
+			System.out.println("Error: invalid parameters; ncols= " + ncols + " nrows= " + nrows);
+			System.exit(-1);
+		}
+		grid = new Point[ncols][nrows];
 		int [] edges;
 		
 		for(x=0;x<ncols;x++) {
@@ -24,17 +29,24 @@ class Grid {
 				if(x!=ncols-1)
 					edges[0]=1;
 				
-				simGrid[x][y]= new Point(x,y,edges);
+				grid[x][y]= new Point(x,y,edges);
 			}
 		}
 	}
 	
+	void addSPEdges(int xinit, int yinit, int xfinal, int yfinal, int cost) {
+		System.out.println("Adding Special Cost Zone between [" + xinit + "," + yinit + "] and [" + xfinal + "," + yfinal + "] with cost= " + cost);
+	}
+	
+	void addObstacle(int xpos, int ypos) {
+		System.out.println("Adding Obstacle between [" + xpos + "," + ypos + "]");
+	}
 	@Override
 	public String toString() {
 		String ret="";
 		for(int x=0; x<ncols; x++)
 			for(int y=0; y<nrows; y++)
-				ret=ret + simGrid[x][y].toString() + "\n";
+				ret=ret + grid[x][y].toString() + "\n";
 		return ret;
 	}
 }

@@ -21,6 +21,13 @@ public class PathSimulation implements Simulation{
 	int maxPop;
 	Grid simGrid;
 	int comfortSens;
+	Point initPoint;
+	Point finalPoint;
+	int nObsts;
+	int nZones;
+	int deathP;
+	int reprP;
+	int moveP;
 	
 	public void setupSimulation(String fileName) {
 		this.parseFile(fileName);
@@ -32,6 +39,16 @@ public class PathSimulation implements Simulation{
 		System.out.println("comfortSens = " + comfortSens);
 		
 		System.out.println("Grid: \n" + simGrid);
+		
+		System.out.println("Initial Point: " + initPoint);
+		System.out.println("Final Point: " + finalPoint);
+
+		System.out.println("Number of Special Cost Zones: " + nZones);
+		System.out.println("Number of Obstacles: " + nObsts);
+		
+		System.out.println("Death Parameter: " + deathP);
+		System.out.println("Reproduction Parameter: " + reprP);
+		System.out.println("Move Parameter: " + moveP);
 	}
 	
 	public void initSimulation() {
@@ -62,5 +79,11 @@ public class PathSimulation implements Simulation{
 		 } catch(ParserConfigurationException e) {
 			 System.err.println("Parser configuration error");
 		 } 
+	}
+	
+	@Override
+	public String toString() {
+		String ret=currTime + "\n" + finalInst + "\n" + initPop + "\n" + maxPop + "\n" + simGrid.toString() + "\n" + comfortSens + "\n" + initPoint + "\n" + finalPoint + "\n" + nObsts + "\n" + deathP + "\n" + reprP + "\n" + moveP;
+		return ret;
 	}
 }
