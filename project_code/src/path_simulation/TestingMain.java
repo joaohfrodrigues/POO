@@ -5,7 +5,7 @@ package path_simulation;
 public class TestingMain {
 	public static void main(String[] args) {		
 		/*Testing Grid*/
-		Grid grid= new Grid(5,5);
+		/*Grid grid= new Grid(5,5);
 		
 		System.out.println(grid);
 		
@@ -20,6 +20,7 @@ public class TestingMain {
 		path.updatePath(grid.grid[0][1]);
 		
 		System.out.println(path);
+		*/
 		/* Testing PEC*/
 		/*PEC pecinho = new PEC();
 		

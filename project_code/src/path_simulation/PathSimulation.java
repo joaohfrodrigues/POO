@@ -17,8 +17,6 @@ import simulation.Simulation;
 public class PathSimulation implements Simulation{
 	int currTime;
 	int finalInst;
-	int initPop;
-	int maxPop;
 	Grid simGrid;
 	int comfortSens;
 	Point initPoint;
@@ -29,14 +27,14 @@ public class PathSimulation implements Simulation{
 	int reprP;
 	int moveP;
 	Path bestPath;
+	Population pop;
+	int initPop=0;
+	int maxPop=0;
 	
 	public void setupSimulation(String fileName) {
 		//Read File
 		this.parseFile(fileName);
 		currTime=0;
-		
-		//Create Individuals
-		
 		
 		System.out.println("currTime = " + currTime);
 		System.out.println("finalInst = " + finalInst);
@@ -55,6 +53,12 @@ public class PathSimulation implements Simulation{
 		System.out.println("Death Parameter: " + deathP);
 		System.out.println("Reproduction Parameter: " + reprP);
 		System.out.println("Move Parameter: " + moveP);
+		
+		pop=new Population(maxPop);
+		for(int i=0;i<initPop;i++)
+			pop.addIndividual(new Individual(initPoint));
+		
+		System.out.println(pop);
 	}
 	
 	public void initSimulation() {
@@ -67,6 +71,10 @@ public class PathSimulation implements Simulation{
 	
 	//Method that returns a random variable between two numbers, according to some time constants
 	int expRandom(){
+		return 0;
+	}
+	
+	int comfort(Individual ind, int cmax, Point finalPoint, int k) {
 		return 0;
 	}
 	
@@ -89,7 +97,7 @@ public class PathSimulation implements Simulation{
 	
 	@Override
 	public String toString() {
-		String ret=currTime + "\n" + finalInst + "\n" + initPop + "\n" + maxPop + "\n" + simGrid.toString() + "\n" + comfortSens + "\n" + initPoint + "\n" + finalPoint + "\n" + nObsts + "\n" + deathP + "\n" + reprP + "\n" + moveP;
+		String ret=currTime + "\n" + finalInst + "\n" + pop.size + "\n" + pop.maxSize + "\n" + simGrid.toString() + "\n" + comfortSens + "\n" + "\n" + finalPoint + "\n" + nObsts + "\n" + deathP + "\n" + reprP + "\n" + moveP;
 		return ret;
 	}
 }
