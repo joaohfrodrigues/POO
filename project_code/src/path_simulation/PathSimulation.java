@@ -31,8 +31,13 @@ public class PathSimulation implements Simulation{
 	Path bestPath;
 	
 	public void setupSimulation(String fileName) {
+		//Read File
 		this.parseFile(fileName);
 		currTime=0;
+		
+		//Create Individuals
+		
+		
 		System.out.println("currTime = " + currTime);
 		System.out.println("finalInst = " + finalInst);
 		System.out.println("initPop= " + initPop);
