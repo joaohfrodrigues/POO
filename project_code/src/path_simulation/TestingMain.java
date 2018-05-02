@@ -1,5 +1,7 @@
 package path_simulation;
-
+/*
+ * A testing Main
+ */
 public class TestingMain {
 	public static void main(String[] args) {
 		Grid grid= new Grid(5,5);

@@ -1,8 +1,7 @@
 package main;
-
 import path_simulation.PathSimulation;
-
-/*Main package: responsible for reading the input file
+/*
+ * Main package: responsible for doing the simulation
  * Arguments: XML file name
  */
 public class Main{

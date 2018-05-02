@@ -28,6 +28,7 @@ public class PathSimulation implements Simulation{
 	int deathP;
 	int reprP;
 	int moveP;
+	Path bestPath;
 	
 	public void setupSimulation(String fileName) {
 		this.parseFile(fileName);

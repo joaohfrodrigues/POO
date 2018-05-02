@@ -1,6 +1,8 @@
 package path_simulation;
 import pec.Event;
-
+/*
+ * A type of event that makes an individual die
+ */
 class Death extends Event{
 	Individual id;
 	

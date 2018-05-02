@@ -1,5 +1,7 @@
 package path_simulation;
-
+/*
+ * The Grid has a matrix of Points, based on the number of rows and columns of the PathSimulation
+ */
 class Grid {
 	Point [][] grid;
 	int ncols; //columns

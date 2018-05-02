@@ -1,6 +1,8 @@
 package path_simulation;
 import pec.Event;
-
+/*
+ * A type of event that makes an Individual move
+ */
 class Move extends Event{
 	Individual id;
 

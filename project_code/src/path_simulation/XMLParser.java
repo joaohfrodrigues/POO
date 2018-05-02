@@ -1,8 +1,9 @@
 package path_simulation;
-
 import org.xml.sax.*; // Generic API for SAX
 import org.xml.sax.helpers.*; // Handlers
-
+/*
+ * An XMLParser that reads the input file of the PathSimulation and creates the necessary classes and Structures
+ */
 public class XMLParser extends DefaultHandler{
 	static String fileName;
 	static PathSimulation sim;

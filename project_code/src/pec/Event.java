@@ -1,6 +1,6 @@
 package pec;
 /*
- * Can be Death, Reproduction or Move, in the project
+ * A Generic Event, that has an associated time and implements the abstract method simulateEvent
  */
 public abstract class Event {
 	int time;
