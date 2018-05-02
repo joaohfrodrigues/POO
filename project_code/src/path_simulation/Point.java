@@ -9,6 +9,14 @@ class Point {
 	int row;
 	int [] edges = new int[4];
 	
+	Point(int _x,int _y) {
+		column=_x;
+		row=_y;
+		for(int i=0;i<4;i++) {
+			edges[i]=1;
+		}
+	}
+	
 	Point(int _x, int _y, int[] _edges){
 		column=_x;
 		row=_y;

@@ -143,7 +143,7 @@ public class XMLParser extends DefaultHandler{
 	public void characters(char[]ch,int start,int length){
 		String aux=new String(ch,start,length);
 		cost=Integer.parseInt(aux);
-		System.out.println(cost);	
+		//System.out.println(cost);	
 		sim.simGrid.addSPEdges(xinit-1,yinit-1,xfinal-1,yfinal-1, cost);
 	}
 }
