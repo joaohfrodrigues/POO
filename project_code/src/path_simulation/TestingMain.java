@@ -3,13 +3,25 @@ package path_simulation;
  * A testing Main
  */
 public class TestingMain {
-	public static void main(String[] args) {
+	public static void main(String[] args) {		
+		/*Testing Grid*/
 		Grid grid= new Grid(5,5);
 		
 		System.out.println(grid);
 		
-		/* Testing PEC
-		PEC pecinho = new PEC();
+		Path path= new Path();
+		
+		path.updatePath(grid.grid[0][0]);
+		path.updatePath(grid.grid[0][1]);
+		path.updatePath(grid.grid[0][2]);
+		
+		System.out.println(path);
+		
+		path.updatePath(grid.grid[0][1]);
+		
+		System.out.println(path);
+		/* Testing PEC*/
+		/*PEC pecinho = new PEC();
 		
 		Individual a= new Individual(4,5);
 		pecinho.addEvPEC(new Death(10, a));
