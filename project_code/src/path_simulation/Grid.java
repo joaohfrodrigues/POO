@@ -28,7 +28,7 @@ class Grid {
 					edges[3]=1;
 				if(y!=0)
 					edges[2]=1;
-				if(x!=ncols-1)
+				if(y!=nrows-1)
 					edges[0]=1;
 				
 				grid[x][y]= new Point(x,y,edges);

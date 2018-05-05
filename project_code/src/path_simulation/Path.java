@@ -4,7 +4,7 @@ import java.util.Iterator;
 /*
  * A Path has a Linked List of points that have been visited by an Individual.
  * 
- * The method addPoint adds a Point to the list iif that point hasn't been visited before
+ * The method addPoint adds a Point to the list iff that point hasn't been visited before
  */
 class Path {
 	int cost;
