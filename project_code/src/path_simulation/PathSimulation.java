@@ -11,6 +11,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import simulation.Simulation;
 
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 /*
  * Path Simulator. Includes the Pending Event Container, current time and simulation time
@@ -72,9 +73,12 @@ public class PathSimulation implements Simulation{
 	}
 	
 	//Method that returns a random variable between two numbers, according to some time constants
-	int expRandom(int min, int max){		
-		int randomNum = ThreadLocalRandom.current().nextInt(min, max);
-	    return randomNum;
+	double expRandom(int now, int death, int mean){				
+		Random rand = new Random();
+		double next = rand.nextInt((death - now) +1) + now;
+		
+		next = -mean*Math.log(1-next);
+		return now + next;
 	}
 	
 	int comfort(Individual ind, int cmax, Point finalPoint, int k, Grid grid) {
