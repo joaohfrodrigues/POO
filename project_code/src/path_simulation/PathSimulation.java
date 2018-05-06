@@ -10,6 +10,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import simulation.Simulation;
+
+import java.util.concurrent.ThreadLocalRandom;
 /*
  * Path Simulator. Includes the Pending Event Container, current time and simulation time
  * and the population of individuals
@@ -70,12 +72,22 @@ public class PathSimulation implements Simulation{
 	}
 	
 	//Method that returns a random variable between two numbers, according to some time constants
-	int expRandom(){
-		return 0;
+	int expRandom(int min, int max){		
+		int randomNum = ThreadLocalRandom.current().nextInt(min, max);
+	    return randomNum;
 	}
 	
-	int comfort(Individual ind, int cmax, Point finalPoint, int k) {
-		return 0;
+	int comfort(Individual ind, int cmax, Point finalPoint, int k, Grid grid) {
+		int cost = ind.path.cost;
+		int len_p = ind.path.getLength();
+		
+		int dist = finalPoint.column - ind.currPos.column;
+		dist += finalPoint.row - ind.currPos.row;
+		
+		int comf = (1 - (cost-len_p+2)/((cmax-1)*len_p+3))^k;
+		comf *= (1 - dist/(grid.ncols + grid.nrows +1))^k;
+		
+		return comf;
 	}
 	
 	public void parseFile(String fileName){
