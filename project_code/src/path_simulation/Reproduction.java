@@ -15,7 +15,14 @@ class Reproduction extends Event{
 	
 	public void simulateEvent(){
 		int min_len = (int)(0.9*id.path.getLength());
-		min_len += (int)(x*(id.path.getLength()-min_len));
+		//add comfort, denoted here as x
+		//min_len += (int)(x*(id.path.getLength()-min_len));
+		Path inherited = new Path();
+		//inherited.path = id.path.subList(0, min_len);
+		inherited.cost = inherited.getPathCost();
+		
+		Individual child = new Individual(id.path.path.get(min_len), inherited);
+		pop.addIndividual(child);
 
 	}
 	

@@ -12,6 +12,11 @@ class Individual {
 		path=new Path();
 	}
 	
+	Individual(Point pos, Path p) {
+		currPos=pos;
+		path=p;
+	}
+	
 	Individual(Point pos, int _timeDeath){
 		currPos = pos;
 		path= new Path();

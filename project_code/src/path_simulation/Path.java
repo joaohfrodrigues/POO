@@ -81,19 +81,6 @@ class Path {
 		return ret;
 	}
 	
-	/*
-	 * Method that locates the n-th point of path
-	 */
-	Point locatePoint(int n) {
-		Iterator<Point> it= this.path.iterator();
-		Point aux=it.next();
-		int i = 0;
-		while(i!=n) {
-			aux=it.next();
-			i++;
-		}
-		return aux;
-	}
 	
 	@Override
 	public String toString() {
