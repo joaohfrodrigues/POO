@@ -5,10 +5,12 @@ import pec.Event;
  */
 class Reproduction extends Event{
 	Individual id;
+	Population pop;
 	
-	Reproduction(int _time, Individual _id){
+	Reproduction(int _time, Individual _id, Population _pop){
 		super(_time);
 		id=_id;
+		pop=_pop;
 	}
 	
 	public void simulateEvent(){

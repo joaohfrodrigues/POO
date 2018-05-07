@@ -5,7 +5,19 @@ import pec.PEC;
  */
 public interface Simulation {
 	PEC pec= new PEC();
+	
+	/*
+	 * Read the parameters needed to start the simulation: create elements and structures
+	 */
 	void setupSimulation(String fileName);
+	
+	/*
+	 * Initiate the simulation with the parameters already read
+	 */
 	void initSimulation();
+	
+	/*
+	 * Stop the simulation using an interruption
+	 */
 	void stopSimulation();
 }

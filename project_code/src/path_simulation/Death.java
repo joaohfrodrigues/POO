@@ -5,14 +5,16 @@ import pec.Event;
  */
 class Death extends Event{
 	Individual id;
+	Population pop;
 	
-	Death(int _time, Individual _id){
+	Death(int _time, Individual _id, Population _pop){
 		super(_time);
 		id=_id;
+		pop=_pop;
 	}
 	
 	public void simulateEvent(){
-		//int mean = (1 - Math.log(id.comfort(data, cmax)))*k
+		pop.indList.remove(id);
 		id=null;
 	}
 	

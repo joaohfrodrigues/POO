@@ -7,7 +7,6 @@ import org.xml.sax.helpers.*; // Handlers
 public class XMLParser extends DefaultHandler{
 	static String fileName;
 	static PathSimulation sim;
-	int cost=1;
 	int xinit=1;
 	int yinit=1;
 	int xfinal=1;
@@ -140,9 +139,15 @@ public class XMLParser extends DefaultHandler{
 			System.out.println("Element not recognized");
 	}
 	
+	/*
+	 * Read the cost of the SpecialCostEdges
+	 */
 	public void characters(char[]ch,int start,int length){
+		int maxCost=0;
 		String aux=new String(ch,start,length);
-		cost=Integer.parseInt(aux);
+		int cost=Integer.parseInt(aux);
+		if (cost>sim.cmax)
+			sim.cmax=cost;
 		//System.out.println(cost);	
 		sim.simGrid.addSPEdges(xinit-1,yinit-1,xfinal-1,yfinal-1, cost);
 	}

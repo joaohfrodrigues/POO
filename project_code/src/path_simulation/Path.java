@@ -14,26 +14,31 @@ class Path {
 		path= new LinkedList<Point>();
 	}
 	
+	/*
+	 * Method that updates the path of an Individual and removes the path when it returns to a Point already visited
+	 */
 	void updatePath(Point p){
-		int stop=0;
 		int idx=path.indexOf(p);
 		if(idx==-1) {
 			cost+=getMoveCost(path.getLast(),p);
 			path.add(p);
 			System.out.println("Added to Path Point" + p);
 		}else {
-			while(stop==0) {
+			while(true) {
 				try {
 					path.remove(idx+1);
 				}catch(Exception e) {
-					stop=1;
 					System.out.println("Same point: path removed");
+					break;
 				}
 			}
 			cost=getPathCost();
 		}
 	}
 	
+	/*
+	 * Method the returns the total path cost
+	 */
 	int getPathCost() {
 		if (path.size()<2) {
 			System.out.println("Path has only 1 point");
@@ -52,10 +57,16 @@ class Path {
 		return price;
 	}
 	
+	/*
+	 * Method that returns the current length of the path
+	 */
 	int getLength() {
 		return path.size();
 	}
 	
+	/*
+	 * Method that returns the cost of the next move
+	 */
 	int getMoveCost(Point p1, Point p2) {
 		int ret=0;
 		if(p1.column==p2.column-1) {
