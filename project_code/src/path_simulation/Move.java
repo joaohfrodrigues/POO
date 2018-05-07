@@ -1,3 +1,4 @@
+
 package path_simulation;
 import pec.Event;
 /*
@@ -5,19 +6,17 @@ import pec.Event;
  */
 class Move extends Event{
 	Individual id;
+	Grid grid;
 
-	Move(int _time, Individual _id){
+	Move(int _time, Individual _id, Grid _grid){
 		super(_time);
 		id=_id;
+		grid=_grid;
 	}
 	
 	public void simulateEvent(){
-		//Point next = id.currPos.getNextPoint();
-		
-		//next.checkEdges();
-		//id.path.updatePath(next);
-		//id.currPos = next;
-			
+		id.currPos=grid.getNextPoint(id.currPos, id.currPos.getRandomDir());
+		id.path.updatePath(id.currPos);
 	}
 	
 	@Override
