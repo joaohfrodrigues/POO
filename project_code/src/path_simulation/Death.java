@@ -7,7 +7,7 @@ class Death extends Event{
 	Individual id;
 	Population pop;
 	
-	Death(int _time, Individual _id, Population _pop){
+	Death(double _time, Individual _id, Population _pop){
 		super(_time);
 		id=_id;
 		pop=_pop;

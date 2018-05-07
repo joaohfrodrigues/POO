@@ -15,8 +15,7 @@ class Reproduction extends Event{
 	
 	public void simulateEvent(){
 		int min_len = (int)(0.9*id.path.getLength());
-		min_len += (int)(x*(id.path.getLength()-min_len));
-
+		//min_len += (int)(x*(id.path.getLength()-min_len));
 	}
 	
 	@Override

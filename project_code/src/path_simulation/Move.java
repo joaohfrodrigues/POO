@@ -7,7 +7,7 @@ class Move extends Event{
 	Individual id;
 	Grid grid;
 
-	Move(int _time, Individual _id, Grid _grid){
+	Move(double _time, Individual _id, Grid _grid){
 		super(_time);
 		id=_id;
 		grid=_grid;

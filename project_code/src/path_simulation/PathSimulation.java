@@ -66,11 +66,9 @@ public class PathSimulation extends AbsSimulation{
 			pec.addEvPEC(new Observation(t, this));
 		
 		for(int i=0;i<initPop;i++)
-			initIndEvs();
+			initInds();
 		
-		System.out.println(pop);		
-		
-		
+		System.out.println(pec);
 	}
 	
 	public void initSimulation() {
@@ -86,13 +84,14 @@ public class PathSimulation extends AbsSimulation{
 		
 	}
 	
-	void initIndEvs() {
+	void initInds() {
 		/*calculate time of death, first reproduction and first move*/
-		
 		Individual ind = new Individual(initPoint);
-		int tDeath = setTime(ind, deathP);
-		int tMove = setTime(ind, moveP);
-		int tRep = setTime(ind, reprP);
+		double tDeath = setTime(ind, deathP);
+		double tMove = setTime(ind, moveP);
+		double tRep = setTime(ind, reprP);
+		
+		System.out.println("tDeath = " + tDeath + "tMove = " + tMove + "tRep= " + tRep);
 		
 		ind.setDeath(tDeath);
 		
@@ -132,11 +131,10 @@ public class PathSimulation extends AbsSimulation{
 		return (1 - Math.log(1 - comf))*p;
 	}
 	
-	int setTime(Individual ind, int p) {
+	double setTime(Individual ind, int p) {
 		double time = comfort(ind, comfortSens);
 		time = expRandom(calcMean(time, p));
-		
-		return (int)time;
+		return time;
 	}
 
 

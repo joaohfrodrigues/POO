@@ -6,7 +6,7 @@ import pec.Event;
 class Observation extends Event{
 	PathSimulation simulation;
 	
-	Observation(int _time, PathSimulation _simulation){
+	Observation(double _time, PathSimulation _simulation){
 		super(_time);
 		simulation = _simulation;
 	}
