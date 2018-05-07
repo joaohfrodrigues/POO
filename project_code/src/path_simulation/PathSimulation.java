@@ -10,14 +10,13 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import simulation.Simulation;
-
 import pec.Event;
+import pec.PEC;
 /*
  * Path Simulator. Includes the Pending Event Container, current time and simulation time
  * and the population of individuals
  */
-public class PathSimulation implements Simulation{
+public class PathSimulation extends AbsSimulation{
 	int currTime;
 	int finalInst;
 	Grid simGrid;
@@ -34,6 +33,7 @@ public class PathSimulation implements Simulation{
 	int initPop=0;
 	int maxPop=0;
 	int cmax=0; //maximum cost of an edge in the grid
+	PEC pec = new PEC();
 	
 	public void setupSimulation(String fileName) {
 		this.parseFile(fileName); //Read File
@@ -62,14 +62,13 @@ public class PathSimulation implements Simulation{
 		pop=new Population(maxPop);
 		
 		/*INDIVIDUALS AND EVENTS*/
-		for(int t=0; t<finalInst; t=t+finalInst/20) {
+		for(int t=0; t<finalInst; t=t+finalInst/20)
 			pec.addEvPEC(new Observation(t, this));
-		}
+		
 		for(int i=0;i<initPop;i++)
 			initIndEvs();
 			
-		
-		System.out.println(pop);
+		System.out.println(pop);		
 		
 	}
 	
@@ -88,18 +87,15 @@ public class PathSimulation implements Simulation{
 	
 	void initIndEvs() {
 		/*calculate time of death, first reproduction and first move*/
-		
-		Individual ind = new Individual(initPoint);
-		int tDeath = setTime(ind, cmax, finalPoint, comfortSens, deathP);
-		int tMove = setTime(ind, cmax, finalPoint, comfortSens, moveP);
-		int tRep = setTime(ind, cmax, finalPoint, comfortSens, reprP);
-		
-		ind.setDeath(tDeath);
+		int tDeath=5;
+		int tMove=3;
+		int tRep=3;
+		Individual ind = new Individual(initPoint,tDeath);
 		
 		pec.addEvPEC(new Death(tDeath, ind, pop));
 		
 		if(tMove < tDeath)
-			pec.addEvPEC(new Move(tMove, ind));
+			pec.addEvPEC(new Move(tMove, ind, simGrid));
 
 		if(tRep < tDeath)
 			pec.addEvPEC(new Reproduction(tRep, ind, pop));
@@ -107,39 +103,28 @@ public class PathSimulation implements Simulation{
 	}
 	
 	//Method that returns a random variable between two numbers, according to some time constants
-	double expRandom(double mean){				
+	double expRandom(int now, int death, int mean){				
 		Random rand = new Random();
-		double next = rand.nextDouble();
+		double next = rand.nextInt((death - now) +1) + now;
 		
 		next = -mean*Math.log(1-next);
-		return next;
+		return now + next;
 	}
-
+	
 	/*
 	 * Method that returns the comfort of an Individual
 	 */
-	double comfort(Individual ind, int cmax, Point finalPoint, int k) {
+	int comfort(Individual ind, int cmax, Point finalPoint, int k) {
 		int cost = ind.path.cost;
 		int len_p = ind.path.getLength();
 		
 		int dist = finalPoint.column - ind.currPos.column;
 		dist += finalPoint.row - ind.currPos.row;
 		
-		double comf = (1 - (cost-len_p+2)/((cmax-1)*len_p+3))^k;
+		int comf = (1 - (cost-len_p+2)/((cmax-1)*len_p+3))^k;
 		comf *= (1 - dist/(simGrid.ncols + simGrid.nrows +1))^k;
 		
 		return comf;
-	}
-	
-	double calcMean(double comf, int p) {
-		return (1 - Math.log(1 - comf))*p;
-	}
-	
-	int setTime(Individual ind, int cmax, Point finalPoint, int k, int p) {
-		double time = comfort(ind, cmax, finalPoint, k);
-		time = expRandom(calcMean(time, p));
-		
-		return (int)time;
 	}
 
 	
