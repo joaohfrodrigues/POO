@@ -36,6 +36,24 @@ class Grid {
 		}
 	}
 	
+	/*
+	 * Get the next point, with direction 
+	 */
+	Point getNextPoint(Point p, int dir) {
+		Point ret = grid[p.column][p.row];
+		switch(dir) {
+			case 0:
+				ret=grid[p.column][p.row+1];
+			case 1:
+				ret=grid[p.column-1][p.row];
+			case 2:
+				ret=grid[p.column][p.row-1];
+			case 3:
+				ret=grid[p.column+1][p.row];
+		}
+		return ret;
+	}
+	
 	void addSPEdges(int x1, int y1, int x2, int y2, int cost) {
 		//System.out.println("Adding Special Cost Zone between [" + x1 + "+1 ," + y1 + "+1] and [" + x2 + "+1 ," + y2 + "+1] with cost= " + cost);
 		int xinit, yinit, xfinal, yfinal;

@@ -5,17 +5,17 @@ import pec.Event;
  */
 class Move extends Event{
 	Individual id;
+	Grid grid;
 
-	Move(int _time, Individual _id){
+	Move(int _time, Individual _id, Grid _grid){
 		super(_time);
 		id=_id;
+		grid=_grid;
 	}
 	
 	public void simulateEvent(){
-		Path path = this.id.path;
-		Point here = this.id.currPos;
-		//int mean = (1 - Math.log(id.comfort(data, cmax)))*k
-		
+		id.currPos=grid.getNextPoint(id.currPos, id.currPos.getRandomDir());
+		id.path.updatePath(id.currPos);
 	}
 	
 	@Override

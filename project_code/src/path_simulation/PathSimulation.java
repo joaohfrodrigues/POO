@@ -10,14 +10,13 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import simulation.Simulation;
-
 import pec.Event;
+import pec.PEC;
 /*
  * Path Simulator. Includes the Pending Event Container, current time and simulation time
  * and the population of individuals
  */
-public class PathSimulation implements Simulation{
+public class PathSimulation extends AbsSimulation{
 	int currTime;
 	int finalInst;
 	Grid simGrid;
@@ -34,6 +33,7 @@ public class PathSimulation implements Simulation{
 	int initPop=0;
 	int maxPop=0;
 	int cmax=0; //maximum cost of an edge in the grid
+	PEC pec = new PEC();
 	
 	public void setupSimulation(String fileName) {
 		this.parseFile(fileName); //Read File
@@ -62,14 +62,14 @@ public class PathSimulation implements Simulation{
 		pop=new Population(maxPop);
 		
 		/*INDIVIDUALS AND EVENTS*/
-		for(int t=0; t<finalInst; t=t+finalInst/20) {
+		for(int t=0; t<finalInst; t=t+finalInst/20)
 			pec.addEvPEC(new Observation(t, this));
-		}
+		
 		for(int i=0;i<initPop;i++)
 			initIndEvs();
 			
-		
 		System.out.println(pop);
+		
 		
 	}
 	
@@ -96,7 +96,7 @@ public class PathSimulation implements Simulation{
 		pec.addEvPEC(new Death(tDeath, ind, pop));
 		
 		if(tMove < tDeath)
-			pec.addEvPEC(new Move(tMove, ind));
+			pec.addEvPEC(new Move(tMove, ind, simGrid));
 
 		if(tRep < tDeath)
 			pec.addEvPEC(new Reproduction(tRep, ind, pop));
@@ -104,29 +104,29 @@ public class PathSimulation implements Simulation{
 	}
 	
 	//Method that returns a random variable between two numbers, according to some time constants
-		double expRandom(int now, int death, int mean){				
-			Random rand = new Random();
-			double next = rand.nextInt((death - now) +1) + now;
-			
-			next = -mean*Math.log(1-next);
-			return now + next;
-		}
+	double expRandom(int now, int death, int mean){				
+		Random rand = new Random();
+		double next = rand.nextInt((death - now) +1) + now;
+		
+		next = -mean*Math.log(1-next);
+		return now + next;
+	}
 	
 	/*
 	 * Method that returns the comfort of an Individual
 	 */
-		int comfort(Individual ind, int cmax, Point finalPoint, int k) {
-			int cost = ind.path.cost;
-			int len_p = ind.path.getLength();
-			
-			int dist = finalPoint.column - ind.currPos.column;
-			dist += finalPoint.row - ind.currPos.row;
-			
-			int comf = (1 - (cost-len_p+2)/((cmax-1)*len_p+3))^k;
-			comf *= (1 - dist/(simGrid.ncols + simGrid.nrows +1))^k;
-			
-			return comf;
-		}
+	int comfort(Individual ind, int cmax, Point finalPoint, int k) {
+		int cost = ind.path.cost;
+		int len_p = ind.path.getLength();
+		
+		int dist = finalPoint.column - ind.currPos.column;
+		dist += finalPoint.row - ind.currPos.row;
+		
+		int comf = (1 - (cost-len_p+2)/((cmax-1)*len_p+3))^k;
+		comf *= (1 - dist/(simGrid.ncols + simGrid.nrows +1))^k;
+		
+		return comf;
+	}
 
 	
 	/*

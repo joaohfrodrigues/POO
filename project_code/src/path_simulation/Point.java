@@ -1,5 +1,6 @@
 package path_simulation;
 import java.util.Arrays;
+import java.util.Random;
 /*
  * Class Point: has the row, column and the edges vector [up left down right]
  * 
@@ -21,6 +22,26 @@ class Point {
 		column=_x;
 		row=_y;
 		edges=_edges;
+	}
+	
+	int getRandomDir() {
+		int ret=-1;
+		int count=0;
+		Random r = new Random();
+		
+		for(int i=0; i<4;i++)
+			if(edges[i]!=0)
+				count++;
+		/*count is now a value between 0 and count*/ 
+		count=r.nextInt()%count;
+		
+		while(ret==-1) {
+			if(edges[count]!=0)
+				ret=edges[count];
+			count++;
+		}
+		
+		return ret;
 	}
 	
 	int getDistance(Point p) {
