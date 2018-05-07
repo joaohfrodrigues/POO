@@ -90,9 +90,9 @@ public class PathSimulation implements Simulation{
 		/*calculate time of death, first reproduction and first move*/
 		
 		Individual ind = new Individual(initPoint);
-		int tDeath = setTime(ind, cmax, finalPoint, comfortSens, deathP);
-		int tMove = setTime(ind, cmax, finalPoint, comfortSens, moveP);
-		int tRep = setTime(ind, cmax, finalPoint, comfortSens, reprP);
+		int tDeath = setTime(ind, deathP);
+		int tMove = setTime(ind, moveP);
+		int tRep = setTime(ind, reprP);
 		
 		ind.setDeath(tDeath);
 		
@@ -118,15 +118,15 @@ public class PathSimulation implements Simulation{
 	/*
 	 * Method that returns the comfort of an Individual
 	 */
-	double comfort(Individual ind, int cmax, Point finalPoint, int k) {
+	double comfort(Individual ind, int k) {
 		int cost = ind.path.cost;
 		int len_p = ind.path.getLength();
 		
 		int dist = finalPoint.column - ind.currPos.column;
 		dist += finalPoint.row - ind.currPos.row;
 		
-		double comf = (1 - (cost-len_p+2)/((cmax-1)*len_p+3))^k;
-		comf *= (1 - dist/(simGrid.ncols + simGrid.nrows +1))^k;
+		double comf = (1 - (cost-len_p+2)/((cmax-1)*len_p+3))^comfortSens;
+		comf *= (1 - dist/(simGrid.ncols + simGrid.nrows +1))^comfortSens;
 		
 		return comf;
 	}
@@ -135,8 +135,8 @@ public class PathSimulation implements Simulation{
 		return (1 - Math.log(1 - comf))*p;
 	}
 	
-	int setTime(Individual ind, int cmax, Point finalPoint, int k, int p) {
-		double time = comfort(ind, cmax, finalPoint, k);
+	int setTime(Individual ind, int p) {
+		double time = comfort(ind, comfortSens);
 		time = expRandom(calcMean(time, p));
 		
 		return (int)time;

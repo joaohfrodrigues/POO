@@ -16,8 +16,8 @@ class Move extends Event{
 		
 		//next.checkEdges();
 		//id.path.updatePath(next);
-		
-		
+		//id.currPos = next;
+			
 	}
 	
 	@Override
