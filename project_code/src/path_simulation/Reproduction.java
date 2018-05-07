@@ -14,7 +14,9 @@ class Reproduction extends Event{
 	}
 	
 	public void simulateEvent(){
-		//int mean = (1 - Math.log(id.comfort(data, cmax)))*k
+		int min_len = (int)(0.9*id.path.getLength());
+		min_len += (int)(x*(id.path.getLength()-min_len));
+
 	}
 	
 	@Override
