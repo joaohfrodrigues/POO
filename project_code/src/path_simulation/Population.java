@@ -18,6 +18,9 @@ class Population {
 		}
 	}
 	
+	/*
+	 * Method that adds an Individual to the Population
+	 */
 	void addIndividual(Individual ind) {
 		indList.add(ind);
 		size++;
@@ -26,11 +29,22 @@ class Population {
 			epidemics();
 	}
 	
+	/*
+	 * Method that removes an individual from a Population
+	 */
 	void remIndividual(Individual ind) {
-		indList.remove(ind);
+		try {
+			indList.remove(ind);
+		}catch(Exception e) {
+			System.out.println("Impossible to remove the Individual");
+			return;
+		}
 		size--;
 	}
 	
+	/*
+	 * Method that applies an epidemic occurrrence in the Population: needs Individual list
+	 */
 	void epidemics() {
 		
 	}

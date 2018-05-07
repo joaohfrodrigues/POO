@@ -6,7 +6,6 @@ import path_simulation.PathSimulation;
  */
 public class Main{
 	public static void main(String[] args) {
-			// TODO Auto-generated method stub
 			System.out.println("File received in Main: " + args[0]);
 			PathSimulation sim = new PathSimulation();
 			sim.setupSimulation(args[0]);

@@ -18,6 +18,9 @@ class Individual {
 		timeDeath= _timeDeath;
 	}
 	
+	/*
+	 * Method that sets the time of death of an Individual to a certain time
+	 */
 	void setDeath(int _timeDeath) {
 		timeDeath=_timeDeath;
 	}
