@@ -3,9 +3,9 @@ package pec;
  * A Generic Event, that has an associated time and implements the abstract method simulateEvent
  */
 public abstract class Event {
-	int time;
+	protected double time;
 	
-	public Event(int _time){
+	public Event(double _time){
 		time=_time;
 	}
 	 

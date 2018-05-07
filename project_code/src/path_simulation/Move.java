@@ -7,7 +7,7 @@ class Move extends Event{
 	Individual id;
 	Grid grid;
 
-	Move(int _time, Individual _id, Grid _grid){
+	Move(double _time, Individual _id, Grid _grid){
 		super(_time);
 		id=_id;
 		grid=_grid;
@@ -20,6 +20,6 @@ class Move extends Event{
 	
 	@Override
 	public String toString() {
-		return "Event: Move , id= " + id;
+		return "Event: Move , id= " + id + " at t = " + time;
 	}
 }

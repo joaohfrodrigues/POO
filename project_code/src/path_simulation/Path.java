@@ -10,8 +10,14 @@ class Path {
 	int cost;
 	LinkedList<Point> path;
 	
-	Path(){
+	Path(Point pos){
 		path= new LinkedList<Point>();
+		path.add(pos);
+		cost=0;
+	}
+	
+	Path(Point _pos, LinkedList<Point> _path, int _cost){
+		
 	}
 	
 	/*
@@ -32,14 +38,26 @@ class Path {
 					break;
 				}
 			}
-			cost=getPathCost();
+			cost=calcPathCost();
 		}
+	}
+	
+	int getPathCost(){
+		return cost;
+	}
+	
+	void setPath(LinkedList<Point> _path) {
+		path=_path;
+	}
+	
+	void setCost(int _cost) {
+		cost=_cost;
 	}
 	
 	/*
 	 * Method the returns the total path cost
 	 */
-	int getPathCost() {
+	int calcPathCost() {
 		if (path.size()<2) {
 			System.out.println("Path has only 1 point");
 			return -1;
@@ -81,19 +99,6 @@ class Path {
 		return ret;
 	}
 	
-	/*
-	 * Method that locates the n-th point of path
-	 */
-	Point locatePoint(int n) {
-		Iterator<Point> it= this.path.iterator();
-		Point aux=it.next();
-		int i = 0;
-		while(i!=n) {
-			aux=it.next();
-			i++;
-		}
-		return aux;
-	}
 	
 	@Override
 	public String toString() {

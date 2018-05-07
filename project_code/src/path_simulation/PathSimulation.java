@@ -39,6 +39,7 @@ public class PathSimulation extends AbsSimulation{
 		this.parseFile(fileName); //Read File
 		currTime=0;
 		
+		/*
 		System.out.println("currTime = " + currTime);
 		System.out.println("finalInst = " + finalInst);
 		System.out.println("initPop= " + initPop);
@@ -56,7 +57,7 @@ public class PathSimulation extends AbsSimulation{
 		System.out.println("Death Parameter: " + deathP);
 		System.out.println("Reproduction Parameter: " + reprP);
 		System.out.println("Move Parameter: " + moveP);
-		
+		*/
 		
 		/*POPULATION*/
 		pop=new Population(maxPop);
@@ -66,18 +67,31 @@ public class PathSimulation extends AbsSimulation{
 			pec.addEvPEC(new Observation(t, this));
 		
 		for(int i=0;i<initPop;i++)
-			initIndEvs();
+			initInds();
 		
-		System.out.println(pop);		
-		
-		
+		System.out.println(pec);
 	}
 	
 	public void initSimulation() {
-		Event currEvent = pec.nextEvPEC();
-		
+		int nbEvents=0;
+		Event currEvent=pec.nextEvPEC();
+		double time;
 		while(currEvent != null) {
+			nbEvents++;
 			currEvent.simulateEvent();
+			
+			if(currEvent instanceof Move) {
+				time = setTime(((Move) currEvent).id, moveP);
+				if(time< ((Move) currEvent).id.timeDeath)
+					pec.addEvPEC(new Move(time, ((Move) currEvent).id, simGrid));
+			}else if(currEvent instanceof Reproduction) {
+				time = setTime(((Reproduction) currEvent).id, reprP);
+				if(time< ((Reproduction) currEvent).id.timeDeath)
+					pec.addEvPEC(new Reproduction(time, ((Reproduction) currEvent).id, pop));
+			}else if(currEvent instanceof Reproduction) {
+				
+			}
+			
 			currEvent=pec.nextEvPEC();
 		}
 	}
@@ -86,13 +100,14 @@ public class PathSimulation extends AbsSimulation{
 		
 	}
 	
-	void initIndEvs() {
+	void initInds() {
 		/*calculate time of death, first reproduction and first move*/
-		
 		Individual ind = new Individual(initPoint);
-		int tDeath = setTime(ind, deathP);
-		int tMove = setTime(ind, moveP);
-		int tRep = setTime(ind, reprP);
+		double tDeath = setTime(ind, deathP);
+		double tMove = setTime(ind, moveP);
+		double tRep = setTime(ind, reprP);
+		
+		//System.out.println("tDeath = " + tDeath + " tMove = " + tMove + " tRep= " + tRep);
 		
 		ind.setDeath(tDeath);
 		
@@ -109,22 +124,20 @@ public class PathSimulation extends AbsSimulation{
 	//Method that returns a random variable between two numbers, according to some time constants
 	double expRandom(double mean){				
 		Random rand = new Random();
-		double next = rand.nextInt();
-		
-		next = -mean*Math.log(1-next);
-		return next;
+		double ret = rand.nextDouble();
+		ret = -mean*Math.log(1-ret);
+		return ret;
 	}
 	
 	/*
 	 * Method that returns the comfort of an Individual
 	 */
-	double comfort(Individual ind, int k) {
-		
+	double setComfort(Individual ind) {
 		int dist = finalPoint.getDistance(ind.currPos);
-
-		double comf = (1 - (ind.path.cost-ind.path.getLength()+2)/((cmax-1)*ind.path.getLength()+3))^comfortSens;
-		comf *= (1 - dist/(simGrid.ncols + simGrid.nrows +1))^comfortSens;
-		
+		double comf = (1.0 - (ind.path.cost-ind.path.getLength()+2.0)/((cmax-1.0)*ind.path.getLength()+3.0));
+		comf *= (1.0 - dist/(simGrid.ncols + simGrid.nrows +1.0));
+		comf = Math.pow(comf, comfortSens);
+		ind.setComf(comf);
 		return comf;
 	}
 	
@@ -132,11 +145,8 @@ public class PathSimulation extends AbsSimulation{
 		return (1 - Math.log(1 - comf))*p;
 	}
 	
-	int setTime(Individual ind, int p) {
-		double time = comfort(ind, comfortSens);
-		time = expRandom(calcMean(time, p));
-		
-		return (int)time;
+	double setTime(Individual ind, int p) {
+		return expRandom(calcMean(setComfort(ind), p));
 	}
 
 
