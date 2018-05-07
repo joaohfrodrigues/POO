@@ -23,6 +23,10 @@ class Point {
 		edges=_edges;
 	}
 	
+	int getDistance(Point p) {
+		return Math.abs(this.column-p.column) + Math.abs(this.row-p.row);
+	}
+	
 	@Override
 	public String toString() {
 		int x=column+1;

@@ -1,5 +1,6 @@
 package path_simulation;
 import java.io.File;
+import java.util.Random;
 import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -30,10 +31,10 @@ public class PathSimulation implements Simulation{
 	Population pop;
 	int initPop=0;
 	int maxPop=0;
+	int cmax=0; //maximum cost of an edge in the grid
 	
 	public void setupSimulation(String fileName) {
-		//Read File
-		this.parseFile(fileName);
+		this.parseFile(fileName); //Read File
 		currTime=0;
 		
 		System.out.println("currTime = " + currTime);
@@ -55,10 +56,18 @@ public class PathSimulation implements Simulation{
 		System.out.println("Move Parameter: " + moveP);
 		
 		pop=new Population(maxPop);
-		for(int i=0;i<initPop;i++)
-			pop.addIndividual(new Individual(initPoint));
+		int timeDeath=0;
+		for(int i=0;i<initPop;i++) {
+			timeDeath=initEvents();
+			pop.addIndividual(new Individual(initPoint,timeDeath));
+		}
+			
 		
 		System.out.println(pop);
+		int n1=expRandom(1);
+		int n2=expRandom(2);
+		
+		System.out.println(n1 + "" + n2);
 	}
 	
 	public void initSimulation() {
@@ -69,15 +78,33 @@ public class PathSimulation implements Simulation{
 		
 	}
 	
-	//Method that returns a random variable between two numbers, according to some time constants
-	int expRandom(){
+	int initEvents() {
+		
 		return 0;
 	}
 	
+	/*
+	 * Method that returns a random variable between two numbers, according to some time constants
+	 */
+	int expRandom(int param){
+		Random rand = new Random();
+		double n = rand.nextDouble();
+		System.out.println(n);
+		System.out.println(Math.log(1-n)/(-param));
+		return (int) (Math.log(1-n)/(-param));
+	}
+	
+	/*
+	 * Method that returns the comfort of an Individual
+	 */
 	int comfort(Individual ind, int cmax, Point finalPoint, int k) {
-		return 0;
+		int ret=((1-((ind.path.cost-ind.path.getLength()+2)/((cmax-1)*ind.path.getLength()+3)))^k)*(1-(ind.currPos.getDistance(finalPoint)/(simGrid.ncols+simGrid.nrows+1)))^k;
+		return ret;
 	}
 	
+	/*
+	 * Method that calls the XML parser to read the input file
+	 */
 	public void parseFile(String fileName){
 		 SAXParserFactory fact = SAXParserFactory.newInstance();
 		 fact.setValidating(true); 
