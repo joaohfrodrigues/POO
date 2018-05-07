@@ -15,18 +15,18 @@ class Reproduction extends Event{
 	
 	public void simulateEvent(){
 		int min_len = (int)(0.9*id.path.getLength());
-		//add comfort, denoted here as x
-		//min_len += (int)(x*(id.path.getLength()-min_len));
-		Path inherited = new Path();
-		//inherited.path = id.path.subList(0, min_len);
-		inherited.cost = inherited.getPathCost();
+		int len = min_len + (int)(id.comf*(id.path.getLength()-min_len));
+		Path inherited = new Path(id.currPos);
+		inherited.setPath(id.path.path);
+		//.subList(0, len)
+		inherited.setCost(id.path.getPathCost());
 		
-		Individual child = new Individual(id.path.path.get(min_len), inherited);
+		Individual child = new Individual(id.path.path.get(len), inherited);
 		pop.addIndividual(child);
 	}
 	
 	@Override
 	public String toString() {
-		return "Event: Reproduction , id= " + id;
+		return "Event: Reproduction , id= " + id + " at t = " + time;
 	}
 }

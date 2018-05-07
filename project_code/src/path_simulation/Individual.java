@@ -6,10 +6,11 @@ class Individual {
 	Point currPos;
 	Path path;
 	double timeDeath;
+	double comf;
 	
 	Individual(Point pos){
 		currPos=pos;
-		path=new Path();
+		path=new Path(pos);
 	}
 	
 	Individual(Point pos, Path p) {
@@ -19,8 +20,12 @@ class Individual {
 	
 	Individual(Point pos, int _timeDeath){
 		currPos = pos;
-		path= new Path();
+		path= new Path(pos);
 		timeDeath= _timeDeath;
+	}
+	
+	void setComf(double _comf) {
+		comf=_comf;
 	}
 	
 	/*

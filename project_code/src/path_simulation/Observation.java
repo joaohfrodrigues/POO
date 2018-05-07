@@ -17,6 +17,6 @@ class Observation extends Event{
 	
 	@Override
 	public String toString() {
-		return "Event: Observation";
+		return "Event: Observation at t = " + time;
 	}
 }

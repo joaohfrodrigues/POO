@@ -20,6 +20,6 @@ class Death extends Event{
 	
 	@Override
 	public String toString() {
-		return "Event: Death, id = " + id;
+		return "Event: Death, id = " + id + " at t= " + time;
 	}
 }

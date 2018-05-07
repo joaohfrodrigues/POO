@@ -20,6 +20,6 @@ class Move extends Event{
 	
 	@Override
 	public String toString() {
-		return "Event: Move , id= " + id;
+		return "Event: Move , id= " + id + " at t = " + time;
 	}
 }
