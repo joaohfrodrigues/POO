@@ -88,10 +88,13 @@ public class PathSimulation implements Simulation{
 	
 	void initIndEvs() {
 		/*calculate time of death, first reproduction and first move*/
-		int tDeath=5;
-		int tMove=3;
-		int tRep=3;
-		Individual ind = new Individual(initPoint,tDeath);
+		
+		Individual ind = new Individual(initPoint);
+		int tDeath = setTime(ind, cmax, finalPoint, comfortSens, deathP);
+		int tMove = setTime(ind, cmax, finalPoint, comfortSens, moveP);
+		int tRep = setTime(ind, cmax, finalPoint, comfortSens, reprP);
+		
+		ind.setDeath(tDeath);
 		
 		pec.addEvPEC(new Death(tDeath, ind, pop));
 		
@@ -104,29 +107,40 @@ public class PathSimulation implements Simulation{
 	}
 	
 	//Method that returns a random variable between two numbers, according to some time constants
-		double expRandom(int now, int death, int mean){				
-			Random rand = new Random();
-			double next = rand.nextInt((death - now) +1) + now;
-			
-			next = -mean*Math.log(1-next);
-			return now + next;
-		}
-	
+	double expRandom(double mean){				
+		Random rand = new Random();
+		double next = rand.nextDouble();
+		
+		next = -mean*Math.log(1-next);
+		return next;
+	}
+
 	/*
 	 * Method that returns the comfort of an Individual
 	 */
-		int comfort(Individual ind, int cmax, Point finalPoint, int k) {
-			int cost = ind.path.cost;
-			int len_p = ind.path.getLength();
-			
-			int dist = finalPoint.column - ind.currPos.column;
-			dist += finalPoint.row - ind.currPos.row;
-			
-			int comf = (1 - (cost-len_p+2)/((cmax-1)*len_p+3))^k;
-			comf *= (1 - dist/(simGrid.ncols + simGrid.nrows +1))^k;
-			
-			return comf;
-		}
+	double comfort(Individual ind, int cmax, Point finalPoint, int k) {
+		int cost = ind.path.cost;
+		int len_p = ind.path.getLength();
+		
+		int dist = finalPoint.column - ind.currPos.column;
+		dist += finalPoint.row - ind.currPos.row;
+		
+		double comf = (1 - (cost-len_p+2)/((cmax-1)*len_p+3))^k;
+		comf *= (1 - dist/(simGrid.ncols + simGrid.nrows +1))^k;
+		
+		return comf;
+	}
+	
+	double calcMean(double comf, int p) {
+		return (1 - Math.log(1 - comf))*p;
+	}
+	
+	int setTime(Individual ind, int cmax, Point finalPoint, int k, int p) {
+		double time = comfort(ind, cmax, finalPoint, k);
+		time = expRandom(calcMean(time, p));
+		
+		return (int)time;
+	}
 
 	
 	/*

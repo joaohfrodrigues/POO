@@ -12,9 +12,10 @@ class Move extends Event{
 	}
 	
 	public void simulateEvent(){
-		Path path = this.id.path;
-		Point here = this.id.currPos;
-		//int mean = (1 - Math.log(id.comfort(data, cmax)))*k
+		//Point next = id.currPos.getNextPoint();
+		
+		//
+		
 		
 	}
 	
