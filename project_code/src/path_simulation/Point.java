@@ -48,26 +48,6 @@ class Point {
 		return Math.abs(this.column-p.column) + Math.abs(this.row-p.row);
 	}
 	
-	int getRandomDir() {
-		int ret=-1;
-		int count=0;
-		Random r = new Random();
-		
-		for(int i=0; i<4;i++)
-			if(edges[i]!=0)
-				count++;
-		/*count is now a value between 0 and count*/ 
-		count=r.nextInt()%count;
-		
-		while(ret==-1) {
-			if(edges[count]!=0)
-				ret=edges[count];
-			count++;
-		}
-		
-		return ret;
-	}
-	
 	@Override
 	public String toString() {
 		int x=column+1;
