@@ -11,6 +11,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import simulation.Simulation;
+import pec.Event;
 /*
  * Path Simulator. Includes the Pending Event Container, current time and simulation time
  * and the population of individuals
@@ -72,7 +73,12 @@ public class PathSimulation implements Simulation{
 	}
 	
 	public void initSimulation() {
+		Event currEvent = pec.nextEvPEC();
 		
+		while(currEvent != null) {
+			currEvent.simulateEvent();
+			currEvent=pec.nextEvPEC();
+		}
 	}
 	
 	public void stopSimulation() {
