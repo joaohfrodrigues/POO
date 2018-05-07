@@ -143,7 +143,6 @@ public class XMLParser extends DefaultHandler{
 	 * Read the cost of the SpecialCostEdges
 	 */
 	public void characters(char[]ch,int start,int length){
-		int maxCost=0;
 		String aux=new String(ch,start,length);
 		int cost=Integer.parseInt(aux);
 		if (cost>sim.cmax)

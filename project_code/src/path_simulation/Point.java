@@ -24,10 +24,6 @@ class Point {
 		edges=_edges;
 	}
 	
-	int getDistance(Point p) {
-		return Math.abs(this.column-p.column) + Math.abs(this.row-p.row);
-	}
-	
 	int getRandomDir() {
 		int ret=-1;
 		int count=0;
@@ -46,6 +42,10 @@ class Point {
 		}
 		
 		return ret;
+	}
+	
+	int getDistance(Point p) {
+		return Math.abs(this.column-p.column) + Math.abs(this.row-p.row);
 	}
 	
 	@Override
