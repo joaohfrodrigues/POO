@@ -5,7 +5,7 @@ package path_simulation;
 class Individual {
 	Point currPos;
 	Path path;
-	int timeDeath;
+	double timeDeath;
 	
 	Individual(Point pos){
 		currPos=pos;
@@ -21,7 +21,7 @@ class Individual {
 	/*
 	 * Method that sets the time of death of an Individual to a certain time
 	 */
-	void setDeath(int _timeDeath) {
+	void setDeath(double _timeDeath) {
 		timeDeath=_timeDeath;
 	}
 	
