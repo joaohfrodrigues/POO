@@ -103,16 +103,14 @@ public class PathSimulation implements Simulation{
 		pop.addIndividual(ind);
 	}
 	
-	/*
-	 * Method that returns a random variable between two numbers, according to some time constants
-	 */
-	int expRandom(int param){
-		Random rand = new Random();
-		double n = rand.nextDouble();
-		System.out.println(n);
-		System.out.println(Math.log(1-n)/(-param));
-		return (int) (Math.log(1-n)/(-param));
-	}
+	//Method that returns a random variable between two numbers, according to some time constants
+		double expRandom(int now, int death, int mean){				
+			Random rand = new Random();
+			double next = rand.nextInt((death - now) +1) + now;
+			
+			next = -mean*Math.log(1-next);
+			return now + next;
+		}
 	
 	/*
 	 * Method that returns the comfort of an Individual
