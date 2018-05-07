@@ -55,19 +55,20 @@ public class PathSimulation implements Simulation{
 		System.out.println("Reproduction Parameter: " + reprP);
 		System.out.println("Move Parameter: " + moveP);
 		
+		
+		/*POPULATION*/
 		pop=new Population(maxPop);
-		int timeDeath=0;
-		for(int i=0;i<initPop;i++) {
-			timeDeath=initEvents();
-			pop.addIndividual(new Individual(initPoint,timeDeath));
+		
+		/*INDIVIDUALS AND EVENTS*/
+		for(int t=0; t<finalInst; t=t+finalInst/20) {
+			pec.addEvPEC(new Observation(t, this));
 		}
+		for(int i=0;i<initPop;i++)
+			initIndEvs();
 			
 		
 		System.out.println(pop);
-		int n1=expRandom(1);
-		int n2=expRandom(2);
 		
-		System.out.println(n1 + "" + n2);
 	}
 	
 	public void initSimulation() {
@@ -78,9 +79,21 @@ public class PathSimulation implements Simulation{
 		
 	}
 	
-	int initEvents() {
+	void initIndEvs() {
+		/*calculate time of death, first reproduction and first move*/
+		int tDeath=5;
+		int tMove=3;
+		int tRep=3;
+		Individual ind = new Individual(initPoint,tDeath);
 		
-		return 0;
+		pec.addEvPEC(new Death(tDeath, ind, pop));
+		
+		if(tMove < tDeath)
+			pec.addEvPEC(new Move(tMove, ind));
+
+		if(tRep < tDeath)
+			pec.addEvPEC(new Reproduction(tRep, ind, pop));
+		pop.addIndividual(ind);
 	}
 	
 	/*
