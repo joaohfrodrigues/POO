@@ -12,6 +12,7 @@ class Death extends Event{
 	}
 	
 	public void simulateEvent(){
+		//int mean = (1 - Math.log(id.comfort(data, cmax)))*k
 		id=null;
 	}
 	

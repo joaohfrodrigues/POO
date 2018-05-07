@@ -12,7 +12,6 @@ import org.xml.sax.helpers.DefaultHandler;
 import simulation.Simulation;
 
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 /*
  * Path Simulator. Includes the Pending Event Container, current time and simulation time
  * and the population of individuals
@@ -81,18 +80,6 @@ public class PathSimulation implements Simulation{
 		return now + next;
 	}
 	
-	int comfort(Individual ind, int cmax, Point finalPoint, int k, Grid grid) {
-		int cost = ind.path.cost;
-		int len_p = ind.path.getLength();
-		
-		int dist = finalPoint.column - ind.currPos.column;
-		dist += finalPoint.row - ind.currPos.row;
-		
-		int comf = (1 - (cost-len_p+2)/((cmax-1)*len_p+3))^k;
-		comf *= (1 - dist/(grid.ncols + grid.nrows +1))^k;
-		
-		return comf;
-	}
 	
 	public void parseFile(String fileName){
 		 SAXParserFactory fact = SAXParserFactory.newInstance();
