@@ -67,8 +67,8 @@ public class PathSimulation extends AbsSimulation{
 		
 		for(int i=0;i<initPop;i++)
 			initIndEvs();
-			
-		System.out.println(pop);
+		
+		System.out.println(pop);		
 		
 		
 	}
