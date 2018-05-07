@@ -14,7 +14,8 @@ class Move extends Event{
 	public void simulateEvent(){
 		//Point next = id.currPos.getNextPoint();
 		
-		//
+		//next.checkEdges();
+		//id.path.updatePath(next);
 		
 		
 	}
