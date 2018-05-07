@@ -115,10 +115,19 @@ public class PathSimulation implements Simulation{
 	/*
 	 * Method that returns the comfort of an Individual
 	 */
-	int comfort(Individual ind, int cmax, Point finalPoint, int k) {
-		int ret=((1-((ind.path.cost-ind.path.getLength()+2)/((cmax-1)*ind.path.getLength()+3)))^k)*(1-(ind.currPos.getDistance(finalPoint)/(simGrid.ncols+simGrid.nrows+1)))^k;
-		return ret;
-	}
+		int comfort(Individual ind, int cmax, Point finalPoint, int k) {
+			int cost = ind.path.cost;
+			int len_p = ind.path.getLength();
+			
+			int dist = finalPoint.column - ind.currPos.column;
+			dist += finalPoint.row - ind.currPos.row;
+			
+			int comf = (1 - (cost-len_p+2)/((cmax-1)*len_p+3))^k;
+			comf *= (1 - dist/(simGrid.ncols + simGrid.nrows +1))^k;
+			
+			return comf;
+		}
+
 	
 	/*
 	 * Method that calls the XML parser to read the input file
