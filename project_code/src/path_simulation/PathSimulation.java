@@ -66,8 +66,10 @@ public class PathSimulation extends AbsSimulation{
 		for(int t=0; t<finalInst; t=t+finalInst/20)
 			pec.addEvPEC(new Observation(t, this));
 		
-		for(int i=0;i<initPop;i++)
-			initInds();
+		for(int i=0;i<initPop;i++) {
+			Individual ind = new Individual(initPoint);
+			initInd(ind);
+		}
 		
 		System.out.println(pec);
 	}
@@ -87,7 +89,7 @@ public class PathSimulation extends AbsSimulation{
 			}else if(currEvent instanceof Reproduction) {
 				time = setTime(((Reproduction) currEvent).id, reprP);
 				if(time< ((Reproduction) currEvent).id.timeDeath)
-					pec.addEvPEC(new Reproduction(time, ((Reproduction) currEvent).id, pop));
+					pec.addEvPEC(new Reproduction(time, ((Reproduction) currEvent).id, this));
 			}else if(currEvent instanceof Reproduction) {
 				
 			}
@@ -100,9 +102,8 @@ public class PathSimulation extends AbsSimulation{
 		
 	}
 	
-	void initInds() {
+	void initInd(Individual ind) {
 		/*calculate time of death, first reproduction and first move*/
-		Individual ind = new Individual(initPoint);
 		double tDeath = setTime(ind, deathP);
 		double tMove = setTime(ind, moveP);
 		double tRep = setTime(ind, reprP);
@@ -117,7 +118,7 @@ public class PathSimulation extends AbsSimulation{
 			pec.addEvPEC(new Move(tMove, ind, simGrid));
 
 		if(tRep < tDeath)
-			pec.addEvPEC(new Reproduction(tRep, ind, pop));
+			pec.addEvPEC(new Reproduction(tRep, ind, this));
 		pop.addIndividual(ind);
 	}
 	
