@@ -1,6 +1,10 @@
 package path_simulation;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Random;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
 /*
  * A Population has a the current size, the max size and a method that applies an Epidemics to the current Population
  */
@@ -46,7 +50,34 @@ class Population {
 	 * Method that applies an epidemic occurrrence in the Population: needs Individual list
 	 */
 	void epidemics() {
+		Population survivors = new Population(this.maxSize);
 		
+		Collections.sort(indList, new Comparator<Individual>() {
+			@Override
+			public int compare(Individual i1, Individual i2) {
+				return -(int)(i1.getComf() - i2.getComf());
+			}
+		});
+
+		int min = indList.size();
+		while (min != 4) {
+		    if(!killProb(indList.get(min).getComf())) {
+		    	remIndividual(indList.get(min));
+		    }
+		    min--;
+		}
+	}
+	
+	// Method that determines if Individual survives epidemic
+	boolean killProb(double comf){
+		comf += 100;
+		
+		Random rand = new Random();
+		int prob = rand.nextInt();
+		prob %= 100;
+		
+		if (comf < prob) return true;
+		else return false;
 	}
 	
 	@Override
