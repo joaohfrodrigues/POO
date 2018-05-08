@@ -17,6 +17,7 @@ class Path {
 	}
 	
 	Path(Point _pos, LinkedList<Point> _path, int _cost){
+		/*MAKE PATH SUBLIST*/
 		path=_path;
 		cost=_cost;
 	}
