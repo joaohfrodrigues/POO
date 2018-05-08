@@ -17,8 +17,8 @@ import pec.PEC;
  * and the population of individuals
  */
 public class PathSimulation extends AbsSimulation{
-	int currTime;
-	int finalInst;
+	double currTime;
+	double finalInst;
 	Grid simGrid;
 	int comfortSens;
 	Point initPoint;
@@ -33,6 +33,7 @@ public class PathSimulation extends AbsSimulation{
 	int initPop=0;
 	int maxPop=0;
 	int cmax=0; //maximum cost of an edge in the grid
+	int nbEvents=0;
 	PEC pec = new PEC();
 	
 	public void setupSimulation(String fileName) {
@@ -63,7 +64,7 @@ public class PathSimulation extends AbsSimulation{
 		pop=new Population(maxPop);
 		
 		/*INDIVIDUALS AND EVENTS*/
-		for(int t=0; t<finalInst; t=t+finalInst/20)
+		for(double t=0; t<finalInst; t=t+finalInst/20)
 			pec.addEvPEC(new Observation(t, this));
 		
 		for(int i=0;i<initPop;i++) {
@@ -75,11 +76,11 @@ public class PathSimulation extends AbsSimulation{
 	}
 	
 	public void initSimulation() {
-		int nbEvents=0;
 		Event currEvent=pec.nextEvPEC();
 
 		while(currEvent != null) {
 			nbEvents++;
+			currTime = currEvent.getTime();
 			currEvent.simulateEvent();			
 			currEvent=pec.nextEvPEC();
 		}
