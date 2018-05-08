@@ -15,9 +15,18 @@ class Move extends Event{
 	
 	public void simulateEvent(){
 		if(sim.pop.indList.contains(id)) {
-			id.currPos=sim.simGrid.getNextPoint(id.currPos, id.currPos.getRandomDir());
+			int dir;
+			try {
+				dir=id.currPos.getRandomDir();
+			}catch(NoPossibleMoves np){
+				System.out.println(np.getMessage());
+				return;
+			}
+			
+			id.currPos=sim.simGrid.getNextPoint(id.currPos, dir);
+			System.out.println("New position= " + id.currPos);
 			id.path.updatePath(id.currPos);
-			updateBestPath(id.path);
+			updateBestPath(id);
 			
 			double time = sim.setTime(id, sim.moveP);
 			if(time< id.timeDeath)
@@ -25,23 +34,30 @@ class Move extends Event{
 		}
 	}
 	
-	public void updateBestPath(Path candidate) {
-		if(sim.bestPath==null) //If no path exists, create one
-			sim.bestPath = candidate;
-		else if (candidate.path.getLast() != sim.finalPoint) {//If the candidate is not the finalPoint
+	public void updateBestPath(Individual candidate) {
+		if(sim.bestPath==null) { //If no path exists, create one
+			sim.bestPath = candidate.path;
+			sim.bestComfort = candidate.comf;
+		}else if (candidate.path.path.getLast() != sim.finalPoint) {//If the candidate is not the finalPoint
 			if(sim.bestPath.path.getLast() == sim.finalPoint) //If the bestPath is already in the finalPoint
 				return;
-			else if(candidate.path.getLast().getDistance(sim.finalPoint)<candidate.path.getLast().getDistance(sim.finalPoint)) { //If the candidate is closer to the finalPoint than the bestPath
-				sim.bestPath = candidate;
-			}else if(candidate.path.getLast().getDistance(sim.finalPoint)==sim.bestPath.path.getLast().getDistance(sim.finalPoint) && candidate.cost<sim.bestPath.cost) {
-				sim.bestPath = candidate;
+			else if(candidate.path.path.getLast().getDistance(sim.finalPoint)<candidate.path.path.getLast().getDistance(sim.finalPoint)) { //If the candidate is closer to the finalPoint than the bestPath
+				sim.bestPath = candidate.path;
+				sim.bestComfort = candidate.comf;
+			}else if(candidate.path.path.getLast().getDistance(sim.finalPoint)==sim.bestPath.path.getLast().getDistance(sim.finalPoint) && candidate.path.cost<sim.bestPath.cost) {
+				sim.bestPath = candidate.path;
+				sim.bestComfort = candidate.comf;
 			}
 		}else{ //If the candidate is the finalPoint 
 			if(sim.bestPath.path.getLast() == sim.finalPoint) { //If the finalPoint was already reached, check cost
-				if(candidate.cost<sim.bestPath.cost)
-					sim.bestPath = candidate;
-			}else //If the final point was reached for the first time, update bestPath
-				sim.bestPath = candidate; 
+				if(candidate.path.cost<sim.bestPath.cost) {
+					sim.bestPath = candidate.path;
+					sim.bestComfort = candidate.comf;
+				}
+			}else { //If the final point was reached for the first time, update bestPath
+				sim.bestPath = candidate.path; 
+				sim.bestComfort = candidate.comf;
+			}
 		}
 	}
 	

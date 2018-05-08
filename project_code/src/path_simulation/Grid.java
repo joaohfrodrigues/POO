@@ -39,17 +39,22 @@ class Grid {
 	/*
 	 * Get the next point, with direction 
 	 */
-	Point getNextPoint(Point p, int dir) {
+	Point getNextPoint(Point p, int dir){
 		Point ret = grid[p.column][p.row];
+		System.out.println(dir);
 		switch(dir) {
 			case 0:
 				ret=grid[p.column][p.row+1];
+				break;
 			case 1:
 				ret=grid[p.column-1][p.row];
+				break;
 			case 2:
 				ret=grid[p.column][p.row-1];
+				break;
 			case 3:
 				ret=grid[p.column+1][p.row];
+				break;
 		}
 		return ret;
 	}

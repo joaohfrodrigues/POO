@@ -24,7 +24,7 @@ class Point {
 		edges=_edges;
 	}
 	
-	int getRandomDir() {
+	int getRandomDir() throws NoPossibleMoves{
 		int ret=-1;
 		int count=0;
 		Random r = new Random();
@@ -32,14 +32,19 @@ class Point {
 		for(int i=0; i<4;i++)
 			if(edges[i]!=0)
 				count++;
-		/*count is now a value between 0 and count*/ 
-		count=r.nextInt()%count;
 		
-		while(ret==-1) {
+		if(count != 0)
+			count=Math.abs(r.nextInt()%count);/*count is now a value between 0 and count*/ 
+		else
+			throw new NoPossibleMoves("No Possible Moves");
+		System.out.println("COUNT=" + count);
+		while(ret==-1 && count<=3) {
 			if(edges[count]!=0)
-				ret=edges[count];
+				ret=count;
 			count++;
 		}
+		
+		//System.out.println("\n"+ret+"\n");
 		
 		return ret;
 	}

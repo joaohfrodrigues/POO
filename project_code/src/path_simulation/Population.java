@@ -59,7 +59,7 @@ class Population {
 			}
 		});
 
-		int min = indList.size();
+		int min = indList.size()-1;
 		while (min != 4) {
 		    if(!killProb(indList.get(min).getComf())) {
 		    	remIndividual(indList.get(min));

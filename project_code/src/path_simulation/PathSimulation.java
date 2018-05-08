@@ -29,6 +29,7 @@ public class PathSimulation extends AbsSimulation{
 	int reprP;
 	int moveP;
 	Path bestPath;
+	double bestComfort;
 	Population pop;
 	int initPop=0;
 	int maxPop=0;
@@ -72,7 +73,7 @@ public class PathSimulation extends AbsSimulation{
 			initInd(ind);
 		}
 		
-		System.out.println(pec);
+		//System.out.println(pec);
 	}
 	
 	public void initSimulation() {
@@ -81,6 +82,7 @@ public class PathSimulation extends AbsSimulation{
 		while(currEvent != null) {
 			nbEvents++;
 			currTime = currEvent.getTime();
+			System.out.println(currEvent);
 			currEvent.simulateEvent();			
 			currEvent=pec.nextEvPEC();
 		}

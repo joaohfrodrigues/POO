@@ -19,13 +19,16 @@ class Observation extends Event{
 		System.out.println("		Population size:		" + simulation.pop.size);
 		
 		String answer = "no";
-		if(simulation.bestPath.path.getLast()==simulation.finalPoint) {
+		if(simulation.bestPath != null && simulation.bestPath.path.getLast()==simulation.finalPoint) {
 			answer = "yes";
 		}
 		System.out.println("		Final point has been hit:	" + answer);
 		
 		System.out.println("		Path of the best fit individual:	" + simulation.bestPath);
-		System.out.println("		Cost/Comfort:		" + simulation.bestPath.cost + "/");
+		if(simulation.bestPath != null)
+			System.out.println("		Cost/Comfort:		" + simulation.bestPath.cost + "/" + simulation.bestComfort);
+		else
+			System.out.println("		No path");
 		
 	}
 	
