@@ -19,13 +19,13 @@ class Reproduction extends Event{
 			int len = min_len + (int)(id.comf*(id.path.getLength()-min_len));		
 			Path childPath = new Path(sim.initPoint);
 			
-			for(int i=0; i<len; i++) {
+			for(int i=0; i<len; i++)
 				childPath.path.add(id.path.path.get(i));
-			}
 			
 			Individual child = new Individual(id.currPos,childPath);
 			sim.initInd(child);
 			
+			//Add next Reproduction
 			double time = sim.setTime(id, sim.reprP);
 			if(time< id.timeDeath)
 				sim.pec.addEvPEC(new Reproduction(time, id, sim));
