@@ -28,6 +28,10 @@ class Individual {
 		comf=_comf;
 	}
 	
+	double getComf() {
+		return comf;
+	}
+	
 	/*
 	 * Method that sets the time of death of an Individual to a certain time
 	 */
