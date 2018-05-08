@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cf63816d-db64-47a1-8709-8418e577abdd" name="Default" comment="" />
+    <list default="true" id="22c1f5b3-02cb-4c01-82b5-a39192bc9570" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +19,25 @@
     <option name="y" value="20" />
     <option name="width" value="1400" />
     <option name="height" value="990" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -123,11 +142,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cf63816d-db64-47a1-8709-8418e577abdd" name="Default" comment="" />
-      <created>1525797445500</created>
+      <changelist id="22c1f5b3-02cb-4c01-82b5-a39192bc9570" name="Default" comment="" />
+      <created>1525798508913</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1525797445500</updated>
+      <updated>1525798508913</updated>
     </task>
     <servers />
   </component>

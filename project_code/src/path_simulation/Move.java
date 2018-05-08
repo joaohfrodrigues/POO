@@ -18,6 +18,10 @@ class Move extends Event{
 			id.currPos=sim.simGrid.getNextPoint(id.currPos, id.currPos.getRandomDir());
 			id.path.updatePath(id.currPos);
 			updateBestPath(id.path);
+			
+			double time = sim.setTime(id, sim.moveP);
+			if(time< id.timeDeath)
+				sim.pec.addEvPEC(new Move(time, id, sim));
 		}
 	}
 	
