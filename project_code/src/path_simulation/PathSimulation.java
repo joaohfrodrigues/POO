@@ -77,23 +77,10 @@ public class PathSimulation extends AbsSimulation{
 	public void initSimulation() {
 		int nbEvents=0;
 		Event currEvent=pec.nextEvPEC();
-		double time;
+
 		while(currEvent != null) {
 			nbEvents++;
-			currEvent.simulateEvent();
-			
-			if(currEvent instanceof Move) {
-				time = setTime(((Move) currEvent).id, moveP);
-				if(time< ((Move) currEvent).id.timeDeath)
-					pec.addEvPEC(new Move(time, ((Move) currEvent).id, simGrid));
-			}else if(currEvent instanceof Reproduction) {
-				time = setTime(((Reproduction) currEvent).id, reprP);
-				if(time< ((Reproduction) currEvent).id.timeDeath)
-					pec.addEvPEC(new Reproduction(time, ((Reproduction) currEvent).id, this));
-			}else if(currEvent instanceof Reproduction) {
-				
-			}
-			
+			currEvent.simulateEvent();			
 			currEvent=pec.nextEvPEC();
 		}
 	}
@@ -115,7 +102,7 @@ public class PathSimulation extends AbsSimulation{
 		pec.addEvPEC(new Death(tDeath, ind, pop));
 		
 		if(tMove < tDeath)
-			pec.addEvPEC(new Move(tMove, ind, simGrid));
+			pec.addEvPEC(new Move(tMove, ind, this));
 
 		if(tRep < tDeath)
 			pec.addEvPEC(new Reproduction(tRep, ind, this));
