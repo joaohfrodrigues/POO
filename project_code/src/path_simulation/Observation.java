@@ -5,6 +5,7 @@ import pec.Event;
  */
 class Observation extends Event{
 	PathSimulation simulation;
+	static int number;
 	
 	Observation(double _time, PathSimulation _simulation){
 		super(_time);
@@ -12,6 +13,19 @@ class Observation extends Event{
 	}
 	
 	public void simulateEvent(){
+		System.out.println("Observation " + (number++) + ":");
+		System.out.println("		Present instant:		" + simulation.currTime);
+		System.out.println("		Number of realized events:	" + simulation.nbEvents);
+		System.out.println("		Population size:		" + simulation.pop.size);
+		
+		String answer = "no";
+		if(simulation.bestPath.path.getLast()==simulation.finalPoint) {
+			answer = "yes";
+		}
+		System.out.println("		Final point has been hit:	" + answer);
+		
+		System.out.println("		Path of the best fit individual:	" + simulation.bestPath);
+		System.out.println("		Cost/Comfort:		" + simulation.bestPath.cost + "/");
 		
 	}
 	

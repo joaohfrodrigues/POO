@@ -8,6 +8,10 @@ public abstract class Event {
 	public Event(double _time){
 		time=_time;
 	}
+	
+	public double getTime() {
+		return time;
+	}
 	 
 	/*
 	@Override

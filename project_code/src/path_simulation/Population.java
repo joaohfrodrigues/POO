@@ -47,7 +47,7 @@ class Population {
 	}
 	
 	/*
-	 * Method that applies an epidemic occurrrence in the Population: needs Individual list
+	 * Method that applies an epidemic occurrence in the Population: needs Individual list
 	 */
 	void epidemics() {
 		Population survivors = new Population(this.maxSize);
@@ -76,7 +76,7 @@ class Population {
 		int prob = rand.nextInt();
 		prob %= 100;
 		
-		if (comf < prob) return true;
+		if (comf <= prob) return true;
 		else return false;
 	}
 	
