@@ -21,6 +21,7 @@ class Move extends Event{
 				dir=id.currPos.getRandomDir();
 			}catch(NoPossibleMoves np){
 				System.out.println(np.getMessage());
+				System.exit(-1);
 				return;
 			}
 			
@@ -64,7 +65,7 @@ class Move extends Event{
 	}
 	
 	Path copyPath(Path newBest) {
-		Path ret= new Path(sim.initPoint);
+		Path ret= new Path();
 		ret.cost=newBest.cost;
 		
 		for(Point p:newBest.path) {

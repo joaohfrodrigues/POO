@@ -24,7 +24,7 @@ class Observation extends Event{
 		}
 		System.out.println("		Final point has been hit:	" + answer);
 		
-		System.out.println("		Path of the best fit individual:	" + simulation.bestPath);
+		System.out.println("		Path of the best fit individual:" + simulation.bestPath);
 		if(simulation.bestPath != null)
 			System.out.println("		Cost/Comfort:		" + simulation.bestPath.cost + "/" + simulation.bestComfort);
 		else

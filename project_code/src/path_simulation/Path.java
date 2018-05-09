@@ -10,6 +10,11 @@ class Path {
 	int cost;
 	LinkedList<Point> path;
 	
+	Path(){
+		path= new LinkedList<Point>();
+		cost=0;
+	}
+	
 	Path(Point pos){
 		path= new LinkedList<Point>();
 		path.add(pos);

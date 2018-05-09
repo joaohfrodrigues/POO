@@ -22,7 +22,7 @@ class Reproduction extends Event{
 			for(int i=1; i<len; i++)
 				childPath.updatePath(id.path.path.get(i));
 			
-			System.out.println(childPath);
+			//System.out.println(childPath);
 			Individual child = new Individual(childPath.path.getLast(),childPath);
 			sim.initInd(child);
 			

@@ -38,10 +38,17 @@ class Point {
 		else
 			throw new NoPossibleMoves("No Possible Moves");
 		//System.out.println("COUNT=" + count);
-		while(ret==-1 && count<=3) {
-			if(edges[count]!=0)
-				ret=count;
-			count++;
+		int aux=0;
+		
+		for(int i=0; i<4;i++) {
+			if(edges[i]!=0) {
+				if(aux!=count)
+					aux++;
+				else {
+					ret=i;
+					break;
+				}
+			}
 		}
 		
 		//System.out.println("\n"+ret+"\n");

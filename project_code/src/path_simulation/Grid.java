@@ -41,7 +41,7 @@ class Grid {
 	 */
 	Point getNextPoint(Point p, int dir){
 		Point ret = grid[p.column][p.row];
-		System.out.println(dir);
+		//System.out.println(dir);
 		switch(dir) {
 			case 0:
 				ret=grid[p.column][p.row+1];
