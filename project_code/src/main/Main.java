@@ -9,6 +9,6 @@ public class Main{
 		//System.out.println("File received in Main: " + args[0]);
 		PathSimulation sim = new PathSimulation();
 		sim.setupSimulation(args[0]);
-		sim.initSimulation();
+		sim.runSimulation();
 	}
 }

@@ -110,11 +110,12 @@ class Path {
 	
 	@Override
 	public String toString() {
-		String ret="Path with cost= " + cost + " and length= " + getLength() + "\n";
+		String ret="{";
 		Iterator<Point> it= this.path.iterator();
 		while(it.hasNext()) {
-			ret= ret + it.next().toString() + "\n";
+			ret+= it.next().toString();
 		}
+		ret+="}";
 		return ret;
 	}
 }

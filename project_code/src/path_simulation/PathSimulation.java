@@ -77,7 +77,7 @@ public class PathSimulation extends AbsSimulation{
 		//System.out.println(pec);
 	}
 	
-	public void initSimulation() {
+	public void runSimulation() {
 		Event currEvent=pec.nextEvPEC();
 
 		while(currEvent != null && currTime < finalInst) {

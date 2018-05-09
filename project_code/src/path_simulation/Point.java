@@ -64,6 +64,6 @@ class Point {
 	public String toString() {
 		int x=column+1;
 		int y=row+1;
-		return("x= " + x + " y= " + y + " ; Edges = " + Arrays.toString(edges));
+		return("(" + x + "," + y + ")");
 	}
 }

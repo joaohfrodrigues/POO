@@ -13,7 +13,7 @@ public interface Simulation {
 	/*
 	 * Initiate the simulation with the parameters already read
 	 */
-	void initSimulation();
+	void runSimulation();
 	
 	/*
 	 * Stop the simulation using an interruption
