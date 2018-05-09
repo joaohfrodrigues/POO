@@ -19,6 +19,7 @@ class Grid {
 		grid = new Point[ncols][nrows];
 		int [] edges;
 		
+		// create edges for each point of the grid
 		for(x=0;x<ncols;x++) {
 			for(y=0;y<nrows;y++) {
 				edges= new int[4];
@@ -59,6 +60,9 @@ class Grid {
 		return ret;
 	}
 	
+	/*
+	 * Update cost for Special Cost edges
+	 */
 	void addSPEdges(int x1, int y1, int x2, int y2, int cost) {
 		//System.out.println("Adding Special Cost Zone between [" + x1 + "+1 ," + y1 + "+1] and [" + x2 + "+1 ," + y2 + "+1] with cost= " + cost);
 		int xinit, yinit, xfinal, yfinal;
@@ -99,12 +103,18 @@ class Grid {
 			
 	}
 	
+	/*
+	 * Change cost of Edge
+	 */
 	void applyCost(int x, int y, int direction, int cost) {
 		if(grid[x][y].edges[direction]<cost && grid[x][y].edges[direction]!=0) {
 			grid[x][y].edges[direction]=cost;
 		}
 	}
 	
+	/*
+	 * Update grid by defining the point location of its obstacles
+	 */
 	void addObstacle(int xpos, int ypos) {
 		//System.out.println("Adding Obstacle in [" + xpos + "+1 ," + ypos + "+1]");
 		for(int i=0; i<4;i++) {

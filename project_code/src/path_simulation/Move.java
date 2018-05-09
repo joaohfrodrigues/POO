@@ -14,8 +14,12 @@ class Move extends Event{
 		sim=_sim;
 	}
 	
+	/*
+	 * Method to simulate the movement of an Individual on the grid
+	 */
 	public void simulateEvent(){
 		if(sim.pop.indList.contains(id)) {
+			// search new possible direction to take from current point
 			int dir;
 			try {
 				dir=id.currPos.getRandomDir();
@@ -37,6 +41,9 @@ class Move extends Event{
 		}
 	}
 	
+	/*
+	 * Update current best path performed, by searching through all the population, and save it
+	 */
 	void updateBestPath(Individual candidate) {
 		if(sim.bestPath==null) { //If no path exists, create one
 			sim.bestPath = copyPath(candidate.path);
@@ -64,6 +71,9 @@ class Move extends Event{
 		}
 	}
 	
+	/*
+	 * Copy a given path
+	 */
 	Path copyPath(Path newBest) {
 		Path ret= new Path();
 		ret.cost=newBest.cost;

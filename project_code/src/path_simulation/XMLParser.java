@@ -25,6 +25,9 @@ public class XMLParser extends DefaultHandler{
 		//System.out.println("Parsing concluded");
 	}
 	
+	/*
+	 * Read XML file and save parameters for simulation
+	 */
 	public void startElement(String uri, String name, String tag, Attributes atts){
 		//System.out.println("Element <" + tag + "> ");
 		int len=atts.getLength();

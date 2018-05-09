@@ -13,6 +13,9 @@ class Death extends Event{
 		pop=_pop;
 	}
 	
+	/*
+	 * Method to simulate death of an Individual, by removing it from current population
+	 */
 	public void simulateEvent(){
 		if(pop.indList.contains(id)) {
 			pop.remIndividual(id);

@@ -22,13 +22,6 @@ class Path {
 	}
 	
 	/*
-	Path(Point _pos, LinkedList<Point> _path, int _cost){
-		path=_path;
-		cost=_cost;
-	}
-	*/
-	
-	/*
 	 * Method that updates the path of an Individual and removes the path when it returns to a Point already visited
 	 */
 	void updatePath(Point p){

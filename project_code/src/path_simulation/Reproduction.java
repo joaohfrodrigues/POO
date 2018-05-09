@@ -13,8 +13,12 @@ class Reproduction extends Event{
 		sim=_simulation;
 	}
 	
+	/*
+	 * Method simulating the reproduction of an Individual
+	 */
 	public void simulateEvent(){
 		if (sim.pop.indList.contains(id)) {
+			// create path to be inherited by child
 			int min_len = (int)(0.9*id.path.getLength());
 			int len = min_len + (int)(id.comf*(id.path.getLength()-min_len));		
 			Path childPath = new Path(sim.initPoint);
@@ -23,6 +27,7 @@ class Reproduction extends Event{
 				childPath.updatePath(id.path.path.get(i));
 			
 			//System.out.println(childPath);
+			// create new Individual and set its parameters to the inherited ones (path and current position)
 			Individual child = new Individual(childPath.path.getLast(),childPath);
 			sim.initInd(child);
 			

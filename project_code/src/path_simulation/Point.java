@@ -24,11 +24,15 @@ class Point {
 		edges=_edges;
 	}
 	
+	/*
+	 * Method to return a random direction out of the possible ones for an Individual to move to
+	 */
 	int getRandomDir() throws NoPossibleMoves{
 		int ret=-1;
 		int count=0;
 		Random r = new Random();
 		
+		// count available directions to take from current point
 		for(int i=0; i<4;i++)
 			if(edges[i]!=0)
 				count++;
@@ -37,7 +41,6 @@ class Point {
 			count=Math.abs(r.nextInt()%count);/*count is now a value between 0 and count*/ 
 		else
 			throw new NoPossibleMoves("No Possible Moves");
-		//System.out.println("COUNT=" + count);
 		int aux=0;
 		
 		for(int i=0; i<4;i++) {
@@ -51,11 +54,13 @@ class Point {
 			}
 		}
 		
-		//System.out.println("\n"+ret+"\n");
-		
+		//System.out.println("\n" + ret + "\n");
 		return ret;
 	}
-	
+
+	/*
+	 * Calculate distance from current point to the one given
+	 */
 	int getDistance(Point p) {
 		return Math.abs(this.column-p.column) + Math.abs(this.row-p.row);
 	}

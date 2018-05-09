@@ -38,6 +38,9 @@ public class PathSimulation extends AbsSimulation{
 	int nbEvents=0;
 	PEC pec = new PEC();
 	
+	/*
+	 * Process XML files and setup data to start simulation
+	 */
 	public void setupSimulation(String fileName) {
 		this.parseFile(fileName); //Read File
 		currTime=0;
@@ -77,6 +80,9 @@ public class PathSimulation extends AbsSimulation{
 		//System.out.println(pec);
 	}
 	
+	/*
+	 * Start simulation
+	 */
 	public void runSimulation() {
 		Event currEvent=pec.nextEvPEC();
 
@@ -100,6 +106,10 @@ public class PathSimulation extends AbsSimulation{
 		
 	}
 	
+	/*
+	 * Initialization of an Individual. Sets a time for its death and may create new events related to it.
+	 * New Individual is also added to the population.
+	 */
 	void initInd(Individual ind) {
 		/*calculate time of death, first reproduction and first move*/
 		double tDeath = currTime + setTime(ind, deathP);
@@ -119,7 +129,9 @@ public class PathSimulation extends AbsSimulation{
 		pop.addIndividual(ind);
 	}
 	
-	//Method that returns a random variable between two numbers, according to some time constants
+	/*
+	 * Method that returns a random variable between two numbers, according to some time constants
+	 */
 	double expRandom(double mean){				
 		Random rand = new Random();
 		double ret = rand.nextDouble();
@@ -139,10 +151,16 @@ public class PathSimulation extends AbsSimulation{
 		return comf;
 	}
 	
+	/*
+	 * Calculate mean to generate time for an Event
+	 */
 	double calcMean(double comf, int p) {
 		return (1 - Math.log(1 - comf))*p;
 	}
 	
+	/*
+	 * Create random time value for new Event
+	 */
 	double setTime(Individual ind, int p) {
 		return expRandom(calcMean(setComfort(ind), p));
 	}

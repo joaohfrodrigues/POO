@@ -10,10 +10,16 @@ public class PEC {
 		ev_set = new TreeSet<Event>(new CompByTime());
 	}
 	
+	/*
+	 * Method to add new Event to current PEC
+	 */
 	public void addEvPEC(Event ev) {
 		ev_set.add(ev);
 	}
 	
+	/*
+	 * Method for fetching first Event located at the beginning of the PEC 
+	 */
 	public Event nextEvPEC(){
 		return ev_set.pollFirst();
 	}
@@ -28,6 +34,9 @@ public class PEC {
 
 }
 
+/*
+ * Class with Comparator whit method to sort the Events in the PEC chronologically 
+ */
 class CompByTime implements Comparator <Event>{
 	public int compare(Event e1, Event e2) {
 		if(e1.time > e2.time) return 1;

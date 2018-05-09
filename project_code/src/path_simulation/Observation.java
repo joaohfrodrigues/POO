@@ -12,6 +12,9 @@ class Observation extends Event{
 		simulation = _simulation;
 	}
 	
+	/*
+	 * Method to print updated data about the simulation from time to time
+	 */
 	public void simulateEvent(){
 		System.out.println("Observation " + (number++) + ":");
 		System.out.println("		Present instant:		" + simulation.currTime);
