@@ -37,7 +37,7 @@ class Point {
 			count=Math.abs(r.nextInt()%count);/*count is now a value between 0 and count*/ 
 		else
 			throw new NoPossibleMoves("No Possible Moves");
-		System.out.println("COUNT=" + count);
+		//System.out.println("COUNT=" + count);
 		while(ret==-1 && count<=3) {
 			if(edges[count]!=0)
 				ret=count;

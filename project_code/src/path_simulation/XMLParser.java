@@ -18,11 +18,11 @@ public class XMLParser extends DefaultHandler{
 	}
 	
 	public void startDocument(){
-	 System.out.println("Beginning the parsing of "+ fileName);
+		//System.out.println("Beginning the parsing of "+ fileName);
 	}
 	
 	public void endDocument(){
-		System.out.println("Parsing concluded");
+		//System.out.println("Parsing concluded");
 	}
 	
 	public void startElement(String uri, String name, String tag, Attributes atts){

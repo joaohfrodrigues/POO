@@ -41,6 +41,6 @@ class Individual {
 	
 	@Override
 	public String toString() {
-		return("Individual in position: " + currPos + " ; Time of death= " + timeDeath + "\n" + path);
+		return("Individual in position: " + currPos + " ; Comf = " + comf + " ; Time of death= " + timeDeath + "\n" + path);
 	}
 }

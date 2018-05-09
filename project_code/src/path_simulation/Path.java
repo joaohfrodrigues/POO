@@ -16,11 +16,12 @@ class Path {
 		cost=0;
 	}
 	
+	/*
 	Path(Point _pos, LinkedList<Point> _path, int _cost){
-		/*MAKE PATH SUBLIST*/
 		path=_path;
 		cost=_cost;
 	}
+	*/
 	
 	/*
 	 * Method that updates the path of an Individual and removes the path when it returns to a Point already visited
@@ -30,13 +31,13 @@ class Path {
 		if(idx==-1) {
 			cost+=getMoveCost(path.getLast(),p);
 			path.add(p);
-			System.out.println("Added to Path Point" + p);
+			//System.out.println("Added to Path Point" + p);
 		}else {
 			while(true) {
 				try {
 					path.remove(idx+1);
 				}catch(Exception e) {
-					System.out.println("Same point: path removed");
+					//System.out.println("Same point: path removed");
 					break;
 				}
 			}
@@ -61,8 +62,8 @@ class Path {
 	 */
 	int calcPathCost() {
 		if (path.size()<2) {
-			System.out.println("Path has only 1 point");
-			return -1;
+			//System.out.println("Path has only 1 point");
+			return 0;
 		}
 		int price=0;
 		Iterator<Point> it= this.path.iterator();

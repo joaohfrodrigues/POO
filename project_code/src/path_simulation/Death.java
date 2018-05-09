@@ -15,7 +15,7 @@ class Death extends Event{
 	
 	public void simulateEvent(){
 		if(pop.indList.contains(id)) {
-			pop.indList.remove(id);
+			pop.remIndividual(id);
 			id=null;
 		}
 	}

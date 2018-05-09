@@ -1,4 +1,6 @@
 package path_simulation;
+import pec.Event;
+import pec.PEC;
 /*
  * A testing Main
  */
@@ -21,6 +23,8 @@ public class TestingMain {
 		
 		System.out.println(path);
 		*/
+		
+		
 		/* Testing PEC*/
 		/*PEC pecinho = new PEC();
 		
@@ -35,8 +39,6 @@ public class TestingMain {
 		
 		System.out.println(next);
 		System.out.println("\n");
-		System.out.println(pecinho);
-		*/
+		System.out.println(pecinho);*/
 	}
-
 }

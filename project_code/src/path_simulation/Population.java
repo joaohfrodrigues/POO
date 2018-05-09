@@ -12,6 +12,7 @@ class Population {
 	int size;
 	int maxSize;
 	LinkedList<Individual> indList;
+	static int i=0;
 	
 	Population(int _maxSize){
 		maxSize=_maxSize;
@@ -49,20 +50,32 @@ class Population {
 	/*
 	 * Method that applies an epidemic occurrence in the Population: needs Individual list
 	 */
-	void epidemics() {
-		Population survivors = new Population(this.maxSize);
-		
+	void epidemics() {	
 		Collections.sort(indList, new Comparator<Individual>() {
 			@Override
 			public int compare(Individual i1, Individual i2) {
-				return -(int)(i1.getComf() - i2.getComf());
+				int ret=0;
+				double dif = i1.getComf() - i2.getComf();
+				if(dif > 0)
+					ret=-1;
+				else if(dif < 0)
+					ret=1;
+				
+				return ret;
 			}
 		});
-
+		/*
+		if(i==0)
+			System.out.println(indList);
+		i=1;;
+		*/
+		
+		//System.out.println("\n" + indList.size() + " ff " + size + " " + maxSize + "\n");
 		int min = indList.size()-1;
 		while (min != 4) {
 		    if(!killProb(indList.get(min).getComf())) {
 		    	remIndividual(indList.get(min));
+		    	
 		    }
 		    min--;
 		}
@@ -70,7 +83,7 @@ class Population {
 	
 	// Method that determines if Individual survives epidemic
 	boolean killProb(double comf){
-		comf += 100;
+		comf *= 100;
 		
 		Random rand = new Random();
 		int prob = rand.nextInt();

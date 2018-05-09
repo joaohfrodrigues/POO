@@ -1,5 +1,6 @@
 package path_simulation;
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 import java.util.Random;
 import java.io.IOException;
 
@@ -79,11 +80,18 @@ public class PathSimulation extends AbsSimulation{
 	public void initSimulation() {
 		Event currEvent=pec.nextEvPEC();
 
-		while(currEvent != null) {
+		while(currEvent != null && currTime < finalInst) {
 			nbEvents++;
 			currTime = currEvent.getTime();
-			System.out.println(currEvent);
-			currEvent.simulateEvent();			
+			//System.out.println();
+			//System.out.println(currEvent);
+			//System.out.println();
+			currEvent.simulateEvent();
+			try {
+				//TimeUnit.SECONDS.sleep(1);
+			}catch(Exception e){
+				
+			}
 			currEvent=pec.nextEvPEC();
 		}
 	}
@@ -94,12 +102,10 @@ public class PathSimulation extends AbsSimulation{
 	
 	void initInd(Individual ind) {
 		/*calculate time of death, first reproduction and first move*/
-		double tDeath = setTime(ind, deathP);
-		double tMove = setTime(ind, moveP);
-		double tRep = setTime(ind, reprP);
-		
+		double tDeath = currTime + setTime(ind, deathP);
+		double tMove = currTime + setTime(ind, moveP);
+		double tRep = currTime + setTime(ind, reprP);
 		//System.out.println("tDeath = " + tDeath + " tMove = " + tMove + " tRep= " + tRep);
-		
 		ind.setDeath(tDeath);
 		
 		pec.addEvPEC(new Death(tDeath, ind, pop));
@@ -109,6 +115,7 @@ public class PathSimulation extends AbsSimulation{
 
 		if(tRep < tDeath)
 			pec.addEvPEC(new Reproduction(tRep, ind, this));
+		
 		pop.addIndividual(ind);
 	}
 	
