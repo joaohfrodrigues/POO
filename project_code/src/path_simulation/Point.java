@@ -1,5 +1,4 @@
 package path_simulation;
-import java.util.Arrays;
 import java.util.Random;
 /*
  * Class Point: has the row, column and the edges vector [up left down right]

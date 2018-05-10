@@ -1,6 +1,5 @@
 package path_simulation;
 import pec.Event;
-import java.util.Arrays;
 /*
  * A type of event that makes an Individual move
  */

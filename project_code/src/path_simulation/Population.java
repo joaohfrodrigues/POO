@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.LinkedList;
 /*
  * A Population has a the current size, the max size and a method that applies an Epidemics to the current Population
  */
