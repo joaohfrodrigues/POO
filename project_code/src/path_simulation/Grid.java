@@ -1,4 +1,7 @@
 package path_simulation;
+
+import java.util.Arrays;
+
 /*
  * The Grid has a matrix of Points, based on the number of rows and columns of the PathSimulation
  */
@@ -80,24 +83,36 @@ class Grid {
 			yfinal=y1;
 		}
 		
-		for(x=xinit; x<=xfinal;x++) {
-			if(x!=xinit) {
+		for(x=xinit-1; x<=xfinal+1;x++) {
+			if(x>xinit) {
 				applyCost(x,yinit,1,cost);
 				applyCost(x,yfinal,1,cost);	
 			}
-			if(x!=xfinal) {
+			if(x<xfinal) {
 				applyCost(x,yinit,3,cost);
 				applyCost(x,yfinal,3,cost);
 			}
+			for(y=yinit;y<=yfinal;y++) {
+				applyCost(xinit-1,y,3,cost);
+				applyCost(xfinal-1,y,3,cost);
+				applyCost(xinit+1,y,1,cost);
+				applyCost(xfinal+1,y,1,cost);
+			}
 		}
-		for(y=yinit; y<=yfinal;y++) {
-			if(y!=yinit) {
+		for(y=yinit-1; y<=yfinal+1;y++) {
+			if(y>yinit) {
 				applyCost(xinit,y,2,cost);
 				applyCost(xfinal,y,2,cost);
 			}
-			if(y!=yfinal) {
+			if(y<yfinal) {
 				applyCost(xinit,y,0,cost);
 				applyCost(xfinal,y,0,cost);
+			}
+			for(x=xinit;x<=xfinal;x++) {
+				applyCost(x,yinit-1,0,cost);
+				applyCost(x,yfinal-1,0,cost);
+				applyCost(x,yinit+1,2,cost);
+				applyCost(x,yfinal+1,2,cost);
 			}
 		}
 			
@@ -107,6 +122,8 @@ class Grid {
 	 * Change cost of Edge
 	 */
 	void applyCost(int x, int y, int direction, int cost) {
+		if(x<0 || y<0 || x>=ncols || y>=nrows)
+			return;
 		if(grid[x][y].edges[direction]<cost && grid[x][y].edges[direction]!=0) {
 			grid[x][y].edges[direction]=cost;
 		}
@@ -138,7 +155,7 @@ class Grid {
 		String ret="";
 		for(int x=0; x<ncols; x++)
 			for(int y=0; y<nrows; y++)
-				ret=ret + grid[x][y].toString() + "\n";
+				ret=ret + "Point " + grid[x][y] + " Edges: " + Arrays.toString(grid[x][y].edges)+ "\n";
 		return ret;
 	}
 }

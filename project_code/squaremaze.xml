@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE simulation SYSTEM "simulation.dtd">
+<simulation finalinst="80000" initpop="100" maxpop="800" comfortsens="3">
+<grid colsnb="15" rowsnb="15"/>
+<initialpoint xinitial="1" yinitial="15"/>
+<finalpoint xfinal="8" yfinal="8"></finalpoint>
+<specialcostzones num="4">
+      <zone xinitial="2" yinitial="14" xfinal="3" yfinal="15">100</zone>
+	<zone xinitial="3" yinitial="10" xfinal="4" yfinal="11">100</zone>
+	<zone xinitial="6" yinitial="5" xfinal="7" yfinal="6">100</zone>
+	<zone xinitial="9" yinitial="10" xfinal="9" yfinal="10">200</zone>
+</specialcostzones>
+<obstacles num="89">
+	<obstacle xpos="2" ypos="2"/>
+	<obstacle xpos="2" ypos="3"/>
+	<obstacle xpos="2" ypos="4"/>
+	<obstacle xpos="2" ypos="5"/>
+	<obstacle xpos="2" ypos="6"/>
+	<obstacle xpos="2" ypos="7"/>
+	<obstacle xpos="2" ypos="8"/>
+	<obstacle xpos="2" ypos="9"/>
+	<obstacle xpos="2" ypos="10"/>
+	<obstacle xpos="2" ypos="11"/>
+	<obstacle xpos="2" ypos="12"/>
+	<obstacle xpos="2" ypos="13"/>
+	<obstacle xpos="2" ypos="14"/>
+	<obstacle xpos="3" ypos="2"/>
+	<obstacle xpos="4" ypos="2"/>
+  <obstacle xpos="4" ypos="4"/>
+  <obstacle xpos="4" ypos="6"/>
+  <obstacle xpos="4" ypos="7"/>
+  <obstacle xpos="4" ypos="8"/>
+  <obstacle xpos="4" ypos="9"/>
+  <obstacle xpos="4" ypos="10"/>
+  <obstacle xpos="4" ypos="12"/>
+  <obstacle xpos="4" ypos="14"/>
+  <obstacle xpos="5" ypos="2"/>
+  <obstacle xpos="5" ypos="4"/>
+  <obstacle xpos="5" ypos="12"/>
+  <obstacle xpos="5" ypos="14"/>
+  <obstacle xpos="6" ypos="2"/>
+  <obstacle xpos="6" ypos="4"/>
+  <obstacle xpos="6" ypos="6"/>
+  <obstacle xpos="6" ypos="7"/>
+  <obstacle xpos="6" ypos="8"/>
+  <obstacle xpos="6" ypos="9"/>
+  <obstacle xpos="6" ypos="10"/>
+  <obstacle xpos="6" ypos="12"/>
+  <obstacle xpos="6" ypos="14"/>
+  <obstacle xpos="7" ypos="2"/>
+  <obstacle xpos="7" ypos="4"/>
+  <obstacle xpos="7" ypos="10"/>
+  <obstacle xpos="7" ypos="12"/>
+  <obstacle xpos="7" ypos="14"/>
+  <obstacle xpos="8" ypos="2"/>
+  <obstacle xpos="8" ypos="4"/>
+  <obstacle xpos="8" ypos="6"/>
+  <obstacle xpos="8" ypos="10"/>
+  <obstacle xpos="8" ypos="12"/>
+  <obstacle xpos="8" ypos="14"/>
+  <obstacle xpos="9" ypos="2"/>
+  <obstacle xpos="9" ypos="4"/>
+  <obstacle xpos="9" ypos="6"/>
+  <obstacle xpos="9" ypos="12"/>
+  <obstacle xpos="9" ypos="14"/>
+  <obstacle xpos="10" ypos="2"/>
+  <obstacle xpos="10" ypos="4"/>
+  <obstacle xpos="10" ypos="6"/>
+  <obstacle xpos="10" ypos="8"/>
+  <obstacle xpos="10" ypos="9"/>
+  <obstacle xpos="10" ypos="10"/>
+  <obstacle xpos="10" ypos="12"/>
+  <obstacle xpos="10" ypos="14"/>
+  <obstacle xpos="11" ypos="2"/>
+  <obstacle xpos="11" ypos="4"/>
+  <obstacle xpos="11" ypos="12"/>
+  <obstacle xpos="11" ypos="14"/>
+  <obstacle xpos="12" ypos="2"/>
+  <obstacle xpos="12" ypos="4"/>
+  <obstacle xpos="12" ypos="5"/>
+  <obstacle xpos="12" ypos="6"/>
+  <obstacle xpos="12" ypos="7"/>
+  <obstacle xpos="12" ypos="8"/>
+  <obstacle xpos="12" ypos="9"/>
+  <obstacle xpos="12" ypos="10"/>
+  <obstacle xpos="12" ypos="11"/>
+  <obstacle xpos="12" ypos="12"/>
+  <obstacle xpos="12" ypos="14"/>
+  <obstacle xpos="13" ypos="2"/>
+  <obstacle xpos="14" ypos="2"/>
+  <obstacle xpos="14" ypos="3"/>
+  <obstacle xpos="14" ypos="4"/>
+  <obstacle xpos="14" ypos="5"/>
+  <obstacle xpos="14" ypos="6"/>
+  <obstacle xpos="14" ypos="7"/>
+  <obstacle xpos="14" ypos="8"/>
+  <obstacle xpos="14" ypos="9"/>
+  <obstacle xpos="14" ypos="10"/>
+  <obstacle xpos="14" ypos="11"/>
+  <obstacle xpos="14" ypos="12"/>
+  <obstacle xpos="14" ypos="13"/>
+  <obstacle xpos="14" ypos="14"/>
+</obstacles>
+<events>
+	<death param="30"/>
+	<reproduction param="1"/>
+	<move param="1"/>
+</events>
+</simulation>

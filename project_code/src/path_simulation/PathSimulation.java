@@ -68,7 +68,7 @@ public class PathSimulation extends AbsSimulation{
 		pop=new Population(maxPop);
 		
 		/*INDIVIDUALS AND EVENTS*/
-		for(double t=0; t<finalInst; t=t+finalInst/20)
+		for(double t=0; t<=finalInst; t=t+finalInst/20)
 			pec.addEvPEC(new Observation(t, this));
 		
 		for(int i=0;i<initPop;i++) {
