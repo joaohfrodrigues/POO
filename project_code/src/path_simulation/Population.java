@@ -4,14 +4,21 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.util.Collections;
 import java.util.Comparator;
+
 /**
  * A Population has a the current size, the max size and a method that applies an Epidemics to the current Population
+ * @author Joao, Sara
+ *
  */
 class Population {
 	int size;
 	int maxSize;
 	LinkedList<Individual> indList;
 	
+	/**
+	 * Creates a Population with a certain maxSize
+	 * @param _maxSize Maximum size of the Population
+	 */
 	Population(int _maxSize){
 		maxSize=_maxSize;
 		if(maxSize>=0)
@@ -22,7 +29,8 @@ class Population {
 	}
 	
 	/**
-	 * Method that adds an Individual to the Population
+	 * Add an Individual to the Population
+	 * @param ind Individual to be added
 	 */
 	void addIndividual(Individual ind) {
 		indList.add(ind);
@@ -33,7 +41,8 @@ class Population {
 	}
 	
 	/**
-	 * Method that removes an individual from a Population
+	 * Remove an individual from a Population
+	 * @param ind Individual to be removed
 	 */
 	void remIndividual(Individual ind) {
 		try {
@@ -67,16 +76,16 @@ class Population {
 		// Determine which Individuals survive the epidemic, besides the strongest 5 of the population
 		int min = indList.size()-1;
 		while (min != 4) {
-		    if(!killProb(indList.get(min).getComf())) {
+		    if(!killProb(indList.get(min).getComf()))
 		    	remIndividual(indList.get(min));
-		    	
-		    }
 		    min--;
 		}
 	}
 	
 	/**
-	 * Method that determines if Individual survives epidemic
+	 * Method that determines if Individual survives the Epidemic
+	 * @param comf Comfort of the Individual
+	 * @return 0-Individual is killed 1-Individual survives
 	 */
 	boolean killProb(double comf){
 		comf *= 100;

@@ -2,11 +2,16 @@ package path_simulation;
 import pec.Event;
 /**
  * A type of event that prints on the terminal an observation of the Simulation
+ * @author Joao,Sara
  */
 class Observation extends Event{
 	PathSimulation simulation;
 	static int number=0;
-	
+	 /**
+	  * Creates an Observation
+	  * @param _time time of the Observation
+	  * @param _simulation Simulation is given to check the parameters
+	  */
 	Observation(double _time, PathSimulation _simulation){
 		super(_time);
 		simulation = _simulation;

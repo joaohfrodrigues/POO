@@ -1,12 +1,21 @@
 package path_simulation;
 import pec.Event;
+
 /**
  * A type of Event that makes an Individual reproduce
+ * @author Joao, Sara
+ *
  */
 class Reproduction extends Event{
 	Individual id;
 	PathSimulation sim;
 	
+	/**
+	 * Creates an Event of type Reproduction
+	 * @param _time Time of the Event
+	 * @param _id Individual on which the Event will be applied
+	 * @param _simulation The Simulation is passed to access methods and parameters
+	 */
 	Reproduction(double _time, Individual _id, PathSimulation _simulation){
 		super(_time);
 		id=_id;
@@ -26,7 +35,6 @@ class Reproduction extends Event{
 			for(int i=1; i<len; i++)
 				childPath.updatePath(id.path.path.get(i));
 			
-			//System.out.println(childPath);
 			// create new Individual and set its parameters to the inherited ones (path and current position)
 			Individual child = new Individual(childPath.path.getLast(),childPath);
 			sim.initInd(child);

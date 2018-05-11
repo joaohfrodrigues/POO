@@ -7,8 +7,8 @@ package pec;
 public abstract class Event {
 	protected double time;
 	/**
-	 * Constructor for the Class Event
-	 * @param _time
+	 * Creates an Event
+	 * @param _time Time of the Event
 	 */
 	public Event(double _time){
 		time=_time;

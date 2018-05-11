@@ -1,7 +1,10 @@
 package path_simulation;
 import pec.Event;
+
 /**
  * A type of event that makes an Individual move
+ * @author Joao,Sara
+ *
  */
 class Move extends Event{
 	Individual id;
@@ -18,7 +21,6 @@ class Move extends Event{
 	 */
 	public void simulateEvent(){
 		if(sim.pop.indList.contains(id)) {
-			// search new possible direction to take from current point
 			int dir;
 			try {
 				dir=id.currPos.getRandomDir();
@@ -29,12 +31,10 @@ class Move extends Event{
 			}
 			
 			id.currPos=sim.simGrid.getNextPoint(id.currPos, dir);
-			//System.out.println("New position= " + id.currPos);
 			id.path.updatePath(id.currPos);
 			updateBestPath(id);
 			
 			double time = sim.currTime + sim.setTime(id, sim.moveP);
-			//System.out.println("New event at time = " + time);
 			if(time< id.timeDeath)
 				sim.pec.addEvPEC(new Move(time, id, sim));
 		}
@@ -42,6 +42,7 @@ class Move extends Event{
 	
 	/**
 	 * Update current best path performed, by searching through all the population, and save it
+	 * @param candidate Individual to evaluate
 	 */
 	void updateBestPath(Individual candidate) {
 		if(sim.bestPath==null) { //If no path exists, create one
@@ -72,6 +73,8 @@ class Move extends Event{
 	
 	/**
 	 * Copy a given path
+	 * @param newBest New bestPath to copy
+	 * @return new bestPath
 	 */
 	Path copyPath(Path newBest) {
 		Path ret= new Path();

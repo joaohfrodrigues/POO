@@ -6,7 +6,13 @@ import pec.Event;
 class Death extends Event{
 	Individual id;
 	Population pop;
-	
+
+	/**
+	 * The Event of death of an Inidivual
+	 * @param _time time of the event
+	 * @param _id Individual
+	 * @param _pop Population at the time of the event
+	 */
 	Death(double _time, Individual _id, Population _pop){
 		super(_time);
 		id=_id;

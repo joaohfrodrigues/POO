@@ -10,6 +10,11 @@ class Grid {
 	int ncols; //columns
 	int nrows; //rows
 	
+	/**
+	 * Build a grid with
+	 * @param _ncols Number of Columns
+	 * @param _nrows Number of Rows
+	 */
 	Grid(int _ncols, int _nrows){
 		int x,y;
 		ncols=_ncols;
@@ -41,7 +46,10 @@ class Grid {
 	}
 	
 	/**
-	 * Get the next point, with direction 
+	 * Get the next point, from a current position
+	 * @param p Current position
+	 * @param dir Direction of move
+	 * @return The next Point
 	 */
 	Point getNextPoint(Point p, int dir){
 		Point ret = grid[p.column][p.row];
@@ -65,12 +73,16 @@ class Grid {
 	
 	/**
 	 * Update cost for Special Cost edges
+	 * @param x1 Initial column of Special Cost Zone
+	 * @param y1 Initial row of Special Cost Zone
+	 * @param x2 Final column of Special Cost Zone
+	 * @param y2 Final row of Special Cost Zone
+	 * @param cost The cost of the Zone
 	 */
 	void addSPEdges(int x1, int y1, int x2, int y2, int cost) {
 		//System.out.println("Adding Special Cost Zone between [" + x1 + "+1 ," + y1 + "+1] and [" + x2 + "+1 ," + y2 + "+1] with cost= " + cost);
 		int xinit, yinit, xfinal, yfinal;
 		int x,y;
-		//DEFINE POS_INIT AND POS_FINAL BASED ON THE ENTRY POINTS
 		if(x1<=x2) {
 			xinit=x1;
 			yinit=y1;
@@ -119,7 +131,11 @@ class Grid {
 	}
 	
 	/**
-	 * Change cost of Edge
+	 * Change cost of an Edge
+	 * @param x Column
+	 * @param y Row
+	 * @param direction Which edge to change [0 - nort; 1 - west; 2 - south; 3 - east]
+	 * @param cost Cost of Edge
 	 */
 	void applyCost(int x, int y, int direction, int cost) {
 		if(x<0 || y<0 || x>=ncols || y>=nrows)
@@ -130,7 +146,9 @@ class Grid {
 	}
 	
 	/**
-	 * Update grid by defining the point location of its obstacles
+	 * Update grid by defining the Point location of its Obstacles
+	 * @param xpos Column of the obstacle
+	 * @param ypos Row of the Obstacle
 	 */
 	void addObstacle(int xpos, int ypos) {
 		//System.out.println("Adding Obstacle in [" + xpos + "+1 ," + ypos + "+1]");

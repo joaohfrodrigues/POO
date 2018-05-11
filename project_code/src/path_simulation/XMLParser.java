@@ -1,8 +1,11 @@
 package path_simulation;
 import org.xml.sax.*; // Generic API for SAX
 import org.xml.sax.helpers.*; // Handlers
+
 /**
  * An XMLParser that reads the input file of the PathSimulation and creates the necessary classes and Structures
+ * @author Joao, Sara
+ *
  */
 public class XMLParser extends DefaultHandler{
 	static String fileName;
@@ -12,6 +15,11 @@ public class XMLParser extends DefaultHandler{
 	int xfinal=1;
 	int yfinal=1;
 	
+	/**
+	 * Create an XML parser
+	 * @param _fileName File to be parsed
+	 * @param _sim The simulation is passed to access some parameters
+	 */
 	public XMLParser(String _fileName, PathSimulation _sim) {
 		fileName=_fileName;
 		sim=_sim;
@@ -150,7 +158,6 @@ public class XMLParser extends DefaultHandler{
 		int cost=Integer.parseInt(aux);
 		if (cost>sim.cmax)
 			sim.cmax=cost;
-		//System.out.println(cost);	
 		sim.simGrid.addSPEdges(xinit-1,yinit-1,xfinal-1,yfinal-1, cost);
 	}
 }

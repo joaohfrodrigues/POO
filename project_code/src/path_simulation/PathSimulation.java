@@ -12,9 +12,12 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import pec.Event;
 import pec.PEC;
+
 /**
  * Path Simulator. Includes the Pending Event Container, current time and simulation time
  * and the population of individuals
+ * @author Joao,Sara
+ *
  */
 public class PathSimulation extends AbsSimulation{
 	double currTime;
@@ -44,26 +47,6 @@ public class PathSimulation extends AbsSimulation{
 		this.parseFile(fileName); //Read File
 		currTime=0;
 		
-		/*
-		System.out.println("currTime = " + currTime);
-		System.out.println("finalInst = " + finalInst);
-		System.out.println("initPop= " + initPop);
-		System.out.println("maxPop = " + maxPop);
-		System.out.println("comfortSens = " + comfortSens);
-		
-		System.out.println("Grid: \n" + simGrid);
-		
-		System.out.println("Initial Point: " + initPoint);
-		System.out.println("Final Point: " + finalPoint);
-
-		System.out.println("Number of Special Cost Zones: " + nZones);
-		System.out.println("Number of Obstacles: " + nObsts);
-		
-		System.out.println("Death Parameter: " + deathP);
-		System.out.println("Reproduction Parameter: " + reprP);
-		System.out.println("Move Parameter: " + moveP);
-		*/
-		
 		/*POPULATION*/
 		pop=new Population(maxPop);
 		
@@ -75,12 +58,10 @@ public class PathSimulation extends AbsSimulation{
 			Individual ind = new Individual(initPoint);
 			initInd(ind);
 		}
-		
-		//System.out.println(pec);
 	}
 	
 	/**
-	 * Start simulation
+	 * Start pathSimulation
 	 */
 	public void runSimulation() {
 		Event currEvent=pec.nextEvPEC();
@@ -101,6 +82,9 @@ public class PathSimulation extends AbsSimulation{
 		}
 	}
 	
+	/**
+	 * Stop simulation: Not Implemented
+	 */
 	public void stopSimulation() {
 		
 	}
@@ -108,6 +92,7 @@ public class PathSimulation extends AbsSimulation{
 	/**
 	 * Initialization of an Individual. Sets a time for its death and may create new events related to it.
 	 * New Individual is also added to the population.
+	 * @param ind Individual to be initialized
 	 */
 	void initInd(Individual ind) {
 		/*calculate time of death, first reproduction and first move*/
@@ -130,6 +115,8 @@ public class PathSimulation extends AbsSimulation{
 	
 	/**
 	 * Method that returns a random variable between two numbers, according to some time constants
+	 * @param mean Mean of the distribution
+	 * @return Random variable according to an exponential distribution with a mean defined by the mean parameter
 	 */
 	double expRandom(double mean){				
 		Random rand = new Random();
@@ -139,7 +126,9 @@ public class PathSimulation extends AbsSimulation{
 	}
 	
 	/**
-	 * Method that returns the comfort of an Individual
+	 * Method that sets the comfort of an Individual
+	 * @param ind Individual
+	 * @return The comfort value of an Individual
 	 */
 	double setComfort(Individual ind) {
 		int dist = finalPoint.getDistance(ind.currPos);
@@ -152,6 +141,9 @@ public class PathSimulation extends AbsSimulation{
 	
 	/**
 	 * Calculate mean to generate time for an Event
+	 * @param comf Comfort Sens
+	 * @param p Parameter related to the probability of the different Events
+	 * @return Mean to be applied in an Exponential distribution, to calculate the time of occurence of an Event
 	 */
 	double calcMean(double comf, int p) {
 		return (1 - Math.log(1 - comf))*p;
@@ -159,6 +151,9 @@ public class PathSimulation extends AbsSimulation{
 	
 	/**
 	 * Create random time value for new Event
+	 * @param ind Individual in which the event is to be performed
+	 * @param p Event parameter
+	 * @return Time of occurence of the Event
 	 */
 	double setTime(Individual ind, int p) {
 		return expRandom(calcMean(setComfort(ind), p));
@@ -168,6 +163,7 @@ public class PathSimulation extends AbsSimulation{
 	
 	/**
 	 * Method that calls the XML parser to read the input file
+	 * @param fileName File to be parsed
 	 */
 	public void parseFile(String fileName){
 		 SAXParserFactory fact = SAXParserFactory.newInstance();

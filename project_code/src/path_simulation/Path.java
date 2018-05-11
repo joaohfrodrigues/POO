@@ -1,18 +1,28 @@
 package path_simulation;
 import java.util.LinkedList;
 import java.util.Iterator;
+
 /**
- * A Path has a Linked List of points that have been visited by an Individual.
+ * A Path has a Linked List of points that have been visited by an Individual, and its cost.
+ * @author Joao
+ *
  */
 class Path {
 	int cost;
 	LinkedList<Point> path;
 	
+	/**
+	 * Creates a new empty path
+	 */
 	Path(){
 		path= new LinkedList<Point>();
 		cost=0;
 	}
 	
+	/**
+	 * Creates a new path, beginning in a defined Position
+	 * @param pos Initial Position of the new Path
+	 */
 	Path(Point pos){
 		path= new LinkedList<Point>();
 		path.add(pos);
@@ -20,20 +30,19 @@ class Path {
 	}
 	
 	/**
-	 * Method that updates the path of an Individual and removes the path when it returns to a Point already visited
+	 * Update the path of an Individual and remove the path when it returns to a Point already visited
+	 * @param p Point to be added to the Path
 	 */
 	void updatePath(Point p){
 		int idx=path.indexOf(p);
 		if(idx==-1) {
 			cost+=getMoveCost(path.getLast(),p);
 			path.add(p);
-			//System.out.println("Added to Path Point" + p);
 		}else {
 			while(true) {
 				try {
 					path.remove(idx+1);
 				}catch(Exception e) {
-					//System.out.println("Same point: path removed");
 					break;
 				}
 			}
@@ -43,7 +52,7 @@ class Path {
 	
 	/**
 	 * Returns the variable cost of the Path
-	 * @return
+	 * @return Cost of the Path
 	 */
 	int getPathCost(){
 		return cost;
@@ -51,7 +60,7 @@ class Path {
 	
 	/**
 	 * Sets a defined path
-	 * @param _path
+	 * @param _path Path to be stored
 	 */
 	void setPath(LinkedList<Point> _path) {
 		path=_path;
@@ -59,18 +68,18 @@ class Path {
 	
 	/**
 	 * Set a new cost for the Path
-	 * @param _cost
+	 * @param _cost New cost of path
 	 */
 	void setCost(int _cost) {
 		cost=_cost;
 	}
 	
 	/**
-	 * Method the returns the total path cost
+	 * Method the returns the total Path cost
+	 * @return Total Path cost
 	 */
 	int calcPathCost() {
 		if (path.size()<2) {
-			//System.out.println("Path has only 1 point");
 			return 0;
 		}
 		int price=0;
@@ -88,6 +97,7 @@ class Path {
 	
 	/**
 	 * Method that returns the current length of the path
+	 * @return Current length of the Path
 	 */
 	int getLength() {
 		return path.size();
@@ -95,6 +105,9 @@ class Path {
 	
 	/**
 	 * Method that returns the cost of the next move
+	 * @param p1 Current Point
+	 * @param p2 Next Point
+	 * @return Cost of moving form the current Point to the next Point
 	 */
 	int getMoveCost(Point p1, Point p2) {
 		int ret=0;
