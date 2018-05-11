@@ -12,7 +12,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import pec.Event;
 import pec.PEC;
-/*
+/**
  * Path Simulator. Includes the Pending Event Container, current time and simulation time
  * and the population of individuals
  */
@@ -37,7 +37,7 @@ public class PathSimulation extends AbsSimulation{
 	int nbEvents=0;
 	PEC pec = new PEC();
 	
-	/*
+	/**
 	 * Process XML files and setup data to start simulation
 	 */
 	public void setupSimulation(String fileName) {
@@ -79,7 +79,7 @@ public class PathSimulation extends AbsSimulation{
 		//System.out.println(pec);
 	}
 	
-	/*
+	/**
 	 * Start simulation
 	 */
 	public void runSimulation() {
@@ -105,7 +105,7 @@ public class PathSimulation extends AbsSimulation{
 		
 	}
 	
-	/*
+	/**
 	 * Initialization of an Individual. Sets a time for its death and may create new events related to it.
 	 * New Individual is also added to the population.
 	 */
@@ -128,7 +128,7 @@ public class PathSimulation extends AbsSimulation{
 		pop.addIndividual(ind);
 	}
 	
-	/*
+	/**
 	 * Method that returns a random variable between two numbers, according to some time constants
 	 */
 	double expRandom(double mean){				
@@ -138,7 +138,7 @@ public class PathSimulation extends AbsSimulation{
 		return ret;
 	}
 	
-	/*
+	/**
 	 * Method that returns the comfort of an Individual
 	 */
 	double setComfort(Individual ind) {
@@ -150,14 +150,14 @@ public class PathSimulation extends AbsSimulation{
 		return comf;
 	}
 	
-	/*
+	/**
 	 * Calculate mean to generate time for an Event
 	 */
 	double calcMean(double comf, int p) {
 		return (1 - Math.log(1 - comf))*p;
 	}
 	
-	/*
+	/**
 	 * Create random time value for new Event
 	 */
 	double setTime(Individual ind, int p) {
@@ -166,12 +166,12 @@ public class PathSimulation extends AbsSimulation{
 
 
 	
-	/*
+	/**
 	 * Method that calls the XML parser to read the input file
 	 */
 	public void parseFile(String fileName){
 		 SAXParserFactory fact = SAXParserFactory.newInstance();
-		 fact.setValidating(true); 
+		 fact.setValidating(true);
 		 
 		 try{
 			 SAXParser saxParser = fact.newSAXParser();

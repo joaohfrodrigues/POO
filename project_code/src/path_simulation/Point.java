@@ -1,8 +1,7 @@
 package path_simulation;
 import java.util.Random;
-/*
+/**
  * Class Point: has the row, column and the edges vector [up left down right]
- * 
  */
 class Point {
 	int column;
@@ -23,7 +22,7 @@ class Point {
 		edges=_edges;
 	}
 	
-	/*
+	/**
 	 * Method to return a random direction out of the possible ones for an Individual to move to
 	 */
 	int getRandomDir() throws NoPossibleMoves{
@@ -57,7 +56,7 @@ class Point {
 		return ret;
 	}
 
-	/*
+	/**
 	 * Calculate distance from current point to the one given
 	 */
 	int getDistance(Point p) {

@@ -1,7 +1,7 @@
 package path_simulation;
 import org.xml.sax.*; // Generic API for SAX
 import org.xml.sax.helpers.*; // Handlers
-/*
+/**
  * An XMLParser that reads the input file of the PathSimulation and creates the necessary classes and Structures
  */
 public class XMLParser extends DefaultHandler{
@@ -25,7 +25,7 @@ public class XMLParser extends DefaultHandler{
 		//System.out.println("Parsing concluded");
 	}
 	
-	/*
+	/**
 	 * Read XML file and save parameters for simulation
 	 */
 	public void startElement(String uri, String name, String tag, Attributes atts){
@@ -142,7 +142,7 @@ public class XMLParser extends DefaultHandler{
 			System.out.println("Element not recognized");
 	}
 	
-	/*
+	/**
 	 * Read the cost of the SpecialCostEdges
 	 */
 	public void characters(char[]ch,int start,int length){

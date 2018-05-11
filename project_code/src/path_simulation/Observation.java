@@ -1,6 +1,6 @@
 package path_simulation;
 import pec.Event;
-/*
+/**
  * A type of event that prints on the terminal an observation of the Simulation
  */
 class Observation extends Event{
@@ -12,7 +12,7 @@ class Observation extends Event{
 		simulation = _simulation;
 	}
 	
-	/*
+	/**
 	 * Method to print updated data about the simulation from time to time
 	 */
 	public void simulateEvent(){

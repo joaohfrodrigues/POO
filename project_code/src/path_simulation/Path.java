@@ -1,10 +1,8 @@
 package path_simulation;
 import java.util.LinkedList;
 import java.util.Iterator;
-/*
+/**
  * A Path has a Linked List of points that have been visited by an Individual.
- * 
- * The method addPoint adds a Point to the list iff that point hasn't been visited before
  */
 class Path {
 	int cost;
@@ -21,7 +19,7 @@ class Path {
 		cost=0;
 	}
 	
-	/*
+	/**
 	 * Method that updates the path of an Individual and removes the path when it returns to a Point already visited
 	 */
 	void updatePath(Point p){
@@ -43,19 +41,31 @@ class Path {
 		}
 	}
 	
+	/**
+	 * Returns the variable cost of the Path
+	 * @return
+	 */
 	int getPathCost(){
 		return cost;
 	}
 	
+	/**
+	 * Sets a defined path
+	 * @param _path
+	 */
 	void setPath(LinkedList<Point> _path) {
 		path=_path;
 	}
 	
+	/**
+	 * Set a new cost for the Path
+	 * @param _cost
+	 */
 	void setCost(int _cost) {
 		cost=_cost;
 	}
 	
-	/*
+	/**
 	 * Method the returns the total path cost
 	 */
 	int calcPathCost() {
@@ -76,14 +86,14 @@ class Path {
 		return price;
 	}
 	
-	/*
+	/**
 	 * Method that returns the current length of the path
 	 */
 	int getLength() {
 		return path.size();
 	}
 	
-	/*
+	/**
 	 * Method that returns the cost of the next move
 	 */
 	int getMoveCost(Point p1, Point p2) {

@@ -1,6 +1,6 @@
 package pec;
 import java.util.*;
-/*
+/**
  * Implementation of the pending event container. A class named Event must be defined in order to use the PEC
  */
 public class PEC {
@@ -10,14 +10,14 @@ public class PEC {
 		ev_set = new TreeSet<Event>(new CompByTime());
 	}
 	
-	/*
+	/**
 	 * Method to add new Event to current PEC
 	 */
 	public void addEvPEC(Event ev) {
 		ev_set.add(ev);
 	}
 	
-	/*
+	/**
 	 * Method for fetching first Event located at the beginning of the PEC 
 	 */
 	public Event nextEvPEC(){
@@ -34,7 +34,7 @@ public class PEC {
 
 }
 
-/*
+/**
  * Class with Comparator whit method to sort the Events in the PEC chronologically 
  */
 class CompByTime implements Comparator <Event>{

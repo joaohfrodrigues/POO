@@ -1,6 +1,6 @@
 package path_simulation;
 import pec.Event;
-/*
+/**
  * A type of event that makes an Individual move
  */
 class Move extends Event{
@@ -13,7 +13,7 @@ class Move extends Event{
 		sim=_sim;
 	}
 	
-	/*
+	/**
 	 * Method to simulate the movement of an Individual on the grid
 	 */
 	public void simulateEvent(){
@@ -40,7 +40,7 @@ class Move extends Event{
 		}
 	}
 	
-	/*
+	/**
 	 * Update current best path performed, by searching through all the population, and save it
 	 */
 	void updateBestPath(Individual candidate) {
@@ -70,7 +70,7 @@ class Move extends Event{
 		}
 	}
 	
-	/*
+	/**
 	 * Copy a given path
 	 */
 	Path copyPath(Path newBest) {

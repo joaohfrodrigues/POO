@@ -1,5 +1,5 @@
 package path_simulation;
-/*
+/**
  * An Individual of the Population has a current position and an associated path
  */
 class Individual {
@@ -24,15 +24,23 @@ class Individual {
 		timeDeath= _timeDeath;
 	}
 	
+	/**
+	 * Set a specified comfort
+	 * @param _comf
+	 */
 	void setComf(double _comf) {
 		comf=_comf;
 	}
 	
+	/**
+	 * Get the current comfort
+	 * @return
+	 */
 	double getComf() {
 		return comf;
 	}
 	
-	/*
+	/**
 	 * Method that sets the time of death of an Individual to a certain time
 	 */
 	void setDeath(double _timeDeath) {

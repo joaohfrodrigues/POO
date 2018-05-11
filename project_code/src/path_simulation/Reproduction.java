@@ -1,6 +1,6 @@
 package path_simulation;
 import pec.Event;
-/*
+/**
  * A type of Event that makes an Individual reproduce
  */
 class Reproduction extends Event{
@@ -13,7 +13,7 @@ class Reproduction extends Event{
 		sim=_simulation;
 	}
 	
-	/*
+	/**
 	 * Method simulating the reproduction of an Individual
 	 */
 	public void simulateEvent(){

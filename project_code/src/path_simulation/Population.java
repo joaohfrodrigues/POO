@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.util.Collections;
 import java.util.Comparator;
-/*
+/**
  * A Population has a the current size, the max size and a method that applies an Epidemics to the current Population
  */
 class Population {
@@ -21,7 +21,7 @@ class Population {
 		}
 	}
 	
-	/*
+	/**
 	 * Method that adds an Individual to the Population
 	 */
 	void addIndividual(Individual ind) {
@@ -32,7 +32,7 @@ class Population {
 			epidemics();
 	}
 	
-	/*
+	/**
 	 * Method that removes an individual from a Population
 	 */
 	void remIndividual(Individual ind) {
@@ -45,7 +45,7 @@ class Population {
 		size--;
 	}
 	
-	/*
+	/**
 	 * Method that applies an epidemic occurrence in the Population: needs Individual list
 	 */
 	void epidemics() {	
@@ -75,7 +75,7 @@ class Population {
 		}
 	}
 	
-	/*
+	/**
 	 * Method that determines if Individual survives epidemic
 	 */
 	boolean killProb(double comf){

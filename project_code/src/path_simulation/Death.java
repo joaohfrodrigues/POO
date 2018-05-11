@@ -1,6 +1,6 @@
 package path_simulation;
 import pec.Event;
-/*
+/**
  * A type of event that makes an individual die
  */
 class Death extends Event{
@@ -13,7 +13,7 @@ class Death extends Event{
 		pop=_pop;
 	}
 	
-	/*
+	/**
 	 * Method to simulate death of an Individual, by removing it from current population
 	 */
 	public void simulateEvent(){

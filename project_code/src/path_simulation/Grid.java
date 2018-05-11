@@ -2,7 +2,7 @@ package path_simulation;
 
 import java.util.Arrays;
 
-/*
+/**
  * The Grid has a matrix of Points, based on the number of rows and columns of the PathSimulation
  */
 class Grid {
@@ -40,7 +40,7 @@ class Grid {
 		}
 	}
 	
-	/*
+	/**
 	 * Get the next point, with direction 
 	 */
 	Point getNextPoint(Point p, int dir){
@@ -63,7 +63,7 @@ class Grid {
 		return ret;
 	}
 	
-	/*
+	/**
 	 * Update cost for Special Cost edges
 	 */
 	void addSPEdges(int x1, int y1, int x2, int y2, int cost) {
@@ -118,7 +118,7 @@ class Grid {
 			
 	}
 	
-	/*
+	/**
 	 * Change cost of Edge
 	 */
 	void applyCost(int x, int y, int direction, int cost) {
@@ -129,7 +129,7 @@ class Grid {
 		}
 	}
 	
-	/*
+	/**
 	 * Update grid by defining the point location of its obstacles
 	 */
 	void addObstacle(int xpos, int ypos) {

@@ -1,6 +1,6 @@
 package main;
 import path_simulation.PathSimulation;
-/*
+/**
  * Main package: responsible for doing the simulation
  * Arguments: XML file name
  */
